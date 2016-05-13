@@ -1,0 +1,54 @@
+.manBody{
+    fill:#EF3C50;
+   }
+   #manBody{
+     stroke:#1D1753;
+     stroke-width:4;
+     stroke-miterlimit:10;
+   }
+#manBody:hover{
+    fill:#FFF;
+
+   }
+
+.body-part-selected{
+  fill:#FFF;
+}
+
+.manRLeg{
+  fill:#2FA949;
+}
+#manRLeg:hover{
+  fill:#FFF;
+}
+
+
+
+.manLLeg{
+  fill:#FED016;
+}
+#manLLeg:hover{
+  fill:#FFF;
+}
+
+.manRArm{
+  fill:#2068B3;
+}
+#manRArm:hover{
+  fill:#FFF;
+}
+
+.manLArm{
+  fill:#6852A2;
+}
+#manLArm:hover{
+  fill:#FFF;
+}
+
+
+.manHead{
+  fill:#D32D91;
+}
+#manHead:hover{
+  fill:#FFF;
+}
