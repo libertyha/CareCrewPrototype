@@ -1,8 +1,5 @@
-/node_modules
-bundle.js
 npm-debug.log
-
-*.iml
+apis.iml
 .DS_Store
 .idea/
 
