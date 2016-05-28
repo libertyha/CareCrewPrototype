@@ -1,54 +1,71 @@
+body {
+     font-family: 'Avenir LT Std 55 Roman', sans-serif;
+}
+
+#manContainer{
+  float: left;
+}
+
 .manBody{
-    fill:#EF3C50;
+    fill:#80CDC4;
    }
    #manBody{
-     stroke:#1D1753;
-     stroke-width:4;
+     stroke:#5e9790;
+     stroke-width:2;
      stroke-miterlimit:10;
    }
 #manBody:hover{
-    fill:#FFF;
-
+    fill:#F1F1F2;
    }
 
 .body-part-selected{
   fill:#FFF;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 
 .manRLeg{
-  fill:#2FA949;
+  fill:#80CDC4;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 #manRLeg:hover{
-  fill:#FFF;
+  fill:#F1F1F2;
 }
-
-
 
 .manLLeg{
-  fill:#FED016;
+  fill:#80CDC4;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 #manLLeg:hover{
-  fill:#FFF;
+  fill:#F1F1F2;
 }
 
 .manRArm{
-  fill:#2068B3;
+  fill:#80CDC4;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 #manRArm:hover{
-  fill:#FFF;
+  fill:#F1F1F2;
 }
 
 .manLArm{
-  fill:#6852A2;
+  fill:#80CDC4;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 #manLArm:hover{
-  fill:#FFF;
+  fill:#F1F1F2;
 }
 
 
 .manHead{
-  fill:#D32D91;
+  fill:#80CDC4;
+  stroke:#5e9790;
+  stroke-width:2;
 }
 #manHead:hover{
-  fill:#FFF;
+  fill:#F1F1F2;
 }

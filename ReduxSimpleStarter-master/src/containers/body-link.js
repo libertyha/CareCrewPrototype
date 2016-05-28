@@ -20,10 +20,10 @@ getSelectedPart(part){
 
 render(){
   return(
-    <div>
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="595.279px" height="841.891px" viewBox="0 0 595.279 841.891" >
+    <div id="manContainer">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="449px" height="848px" viewBox="75.14 -3.555 449 848" >
         <title>bodyImage</title>
-        {this.renderBody()}
+       {this.renderBody()}
       </svg>
     </div>
   )

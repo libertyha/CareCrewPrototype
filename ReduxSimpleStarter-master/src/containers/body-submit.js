@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import request from 'superagent';
+import { bindActionCreators } from 'redux';
+import { reduxForm } from 'redux-form';
+import { createSymptomInstance } from '../actions/index';
 
 export default class BodySubmit extends Component {
   constructor(props){
@@ -9,8 +12,13 @@ export default class BodySubmit extends Component {
     submitPainType: "none",  //used to make first list option the default selected active pain option
     submitSeverity: "none", //used to make first list option the default selected radio button
     submitClicked: false
+  };}
+  componentWillMount() {
+    console.log('This would be a good time to call an action creator to fetch posts');
+
   };
-}
+
+
 onClickSubmit(){
    this.setState({submitBodyPart: this.props.bodyPart.id})
    this.setState({submitPainType: this.props.activePain.name})
@@ -23,15 +31,27 @@ onClickReset(){
    this.setState({submitSeverity: "none"})
    this.setState({submitClicked: false})
 };
+renderPosts() {
+  return this.props.posts.map((post) => {
+    return (
+      <li className="list-group-item" key={post.createdDate}>
+        <span className="pull-xi-right">{post.measurement}</span>
+        <strong>{post.measurementUnit}</strong>
+      </li>);});}
 
   render() {
     if(!this.props.bodyPart){
-      return <div></div> ;
+      return <div><div>List of blog posts</div>
+      <ul className="list-group">
+         {this.renderPosts()}
+      </ul>
+
+      </div> ;
     }
     if(!this.state.submitClicked){
       return  <button onClick={() => this.onClickSubmit()}> Submit Here </button>
     }
-      
+
     const body = {
         firstName: "DannyTest77",
         lastName: "LastTest77",
@@ -77,8 +97,14 @@ function mapStateToProps(state){
   return{
     bodyPart: state.activeBodyPart,
     activePain: state.activePain,
-    activeSeverity: state.activeSeverity
+    activeSeverity: state.activeSeverity,
+    posts:  state.posts.all
     };
 }
+function mapDispatchToProps(dispatch) {
+return bindActionCreators({ createSymptomInstance }, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BodySubmit);
 
-export default connect(mapStateToProps)(BodySubmit);
+//export default reduxForm({form: "PostsNewForm", fields: ['title', 'categories', 'content']
+//}, mapStateToProps, mapDispatchToProps)(PostsNew);
