@@ -24,6 +24,30 @@ onClickSubmit(){
    this.setState({submitPainType: this.props.activePain.name})
    this.setState({submitSeverity: this.props.activeSeverity.name})
    this.setState({submitClicked: true})
+   this.postTrackData()
+};
+postTrackData(){
+       request
+           .post('http://carecrewhq.herokuapp.com/careCrew/users')
+           .accept("application/json")
+           .set("Content-Type", "application/json")
+          // .send(JSON.stringify(body, null, "   "))
+
+           .send('{"firstName":"DannyReq",' +
+               '"lastName":"LastReq",' +
+               '"email":"req@somereq.com",' +
+               '"address":"123 Main St"' +
+               '}')
+
+           .end(function(err, res){
+               if (err || !res.ok) {
+               alert('Oh no! error');
+                   alert(body.firstName);
+                   alert(JSON.stringify(body, null, "   "));
+               } else {
+                   alert('yay got ' + JSON.stringify(res.body));
+               }
+         })
 };
 onClickReset(){
    this.setState({submitBodyPart: "none"})
@@ -59,37 +83,14 @@ renderPosts() {
         address: "77 test st",
     };
 
-    return (
-        // request
-        //     .post('http://carecrewhq.herokuapp.com/careCrew/users')
-        //     .accept("application/json")
-        //     .set("Content-Type", "application/json")
-        //     .send(JSON.stringify(body, null, "   "))
-        //
-        //     .send('{"firstName":"DannyReq",' +
-        //         '"lastName":"LastReq",' +
-        //         '"email":"req@somereq.com",' +
-        //         '"address":"123 Main St"' +
-        //         '}')
-        //
-        //     .end(function(err, res){
-        //         if (err || !res.ok) {
-        //             alert('Oh no! error');
-        //             alert(body.firstName);
-        //             alert(JSON.stringify(body, null, "   "));
-        //         } else {
-        //             alert('yay got ' + JSON.stringify(res.body));
-        //         }
-        //     })
+    return <div>
+                    <h3> Things to submit to server:</h3>
+                    <ul><li>{this.state.submitBodyPart}</li>
+                    <li>{this.state.submitPainType}</li>
+                    <li>{this.state.submitSeverity}</li></ul>
+                    <button onClick={() => this.onClickReset()}> Reset </button>
+                 </div>
 
-      <div>
-         <h3> Things to submit to server:</h3>
-         <ul><li>{this.state.submitBodyPart}</li>
-         <li>{this.state.submitPainType}</li>
-         <li>{this.state.submitSeverity}</li></ul>
-         <button onClick={() => this.onClickReset()}> Reset </button>
-      </div>
-    );
   }
 }
 

@@ -4,7 +4,7 @@ import App from "./components/app";
 import BodyReport from './containers/body-report';
 import UserPatients from './containers/user-patients';
 import BodyInput from './components/bodyInput';
-import DemoStart from './components/demoStart';
+import DemoStart from './containers/demoStart';
 
 export default (
   <Route path="/" component={App}>

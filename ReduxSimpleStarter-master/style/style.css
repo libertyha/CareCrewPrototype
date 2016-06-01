@@ -1,7 +1,9 @@
 body {
      font-family: 'Avenir LT Std 55 Roman', sans-serif;
 }
-
+.headerIcon{
+  width: 100px;
+}
 #manContainer{
   float: left;
 }

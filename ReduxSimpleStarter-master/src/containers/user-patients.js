@@ -8,10 +8,19 @@ export default class UserPatients extends Component {
     console.log('Here she blows');
     this.props.fetchCareClients();
   };
+  goToPatient(thisID){
+
+    console.log('you clicked a patient');
+    console.log(thisID);
+  }
 renderPosts() {
   return this.props.posts.map((post) => {
     return (
-      <li className="list-group-item" key={post._id}>
+      <li className="list-group-item" onClick={() => this.goToPatient(post._id)}  key={post._id}>
+
+
+
+
         <span className="pull-xi-right">{post.firstName}</span>
         <strong>{post.lastName}</strong>
       </li>);});}
