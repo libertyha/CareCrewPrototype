@@ -16,6 +16,8 @@ const USERS = 'patients';
 const HEALTH_MEASURES = 'healthMeasures';
 export const CREATE_SYMPTOM_INSTANCE = 'CREATE_SYMPTOM_INSTANCE';
 const ID_PATIENT_CALL = "?userIds=574502bbffbe460300638e25";
+const ID_USER = "574502bbffbe460300638e25";
+
 
 export function selectBodyPart(bodyPart){
   //selectBook is an ActionCreator, it needs to return and action, an object with type property
@@ -93,7 +95,7 @@ export function fetchUser(id) {
         type: FETCH_PATIENT,
         payload: request  };
       }
-      
+
 
       export function fetchPatientsByUser(userId) {
         const request = axios.get(`${ROOT_URL}patients?userIds=${userId}`);

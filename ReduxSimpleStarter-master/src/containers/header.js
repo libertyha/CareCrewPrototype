@@ -17,7 +17,7 @@ var day = d.getUTCDate();
 var mIndex = d.getUTCMonth();
 var year = d.getUTCFullYear();
 
-var week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+var week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 var month = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var monthString = month[mIndex];//Will give you the desired month
 var weekDay = week[wIndex];
