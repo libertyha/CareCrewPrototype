@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
 
@@ -321,7 +322,7 @@ class ShiftTaskListAndNotifications extends Component {
             <div className="task-div">
               <label>
                   <PureInput type="checkbox"  field={task.completed} /> {task.description.value} {(task.completed.value === true) ? '  -  ' + task.owner.value + '  -   ' + d1s : ''}
-              </label> <span className="task-button-right"><Button className="btn-smx task-button-right" onClick={onTaskButtonClick}> <i/>details...</Button></span>
+              </label> <span className="task-button-right"><Button className="badge task-button-right" onClick={onTaskButtonClick}> <i/>details...</Button></span>
 
             </div>
           </div>
@@ -533,14 +534,6 @@ class ShiftTaskListAndNotifications extends Component {
     );
   }
 }
-
-// ShiftTaskListAndNotifications.propTypes = {
-//   addValue: PropTypes.func.isRequired,
-//   fields: PropTypes.object.isRequired,
-//   handleSubmit: PropTypes.func.isRequired,
-//   resetForm: PropTypes.func.isRequired,
-//   router: PropTypes.object
-// }
 
 ShiftTaskListAndNotifications.propTypes = {
   ...PropTypes,
