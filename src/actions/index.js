@@ -16,6 +16,7 @@ const USERS = 'patients';
 const HEALTH_MEASURES = 'healthMeasures';
 export const CREATE_SYMPTOM_INSTANCE = 'CREATE_SYMPTOM_INSTANCE';
 const ID_PATIENT_CALL = "?userIds=574502bbffbe460300638e25";
+const ID_USER = "574502bbffbe460300638e25";
 const API_KEY  = '';
 
 export const SUBMIT_TASKS = 'SUBMIT_TASKS';
