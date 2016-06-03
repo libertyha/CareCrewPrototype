@@ -8,6 +8,13 @@ export const FETCH_USER = 'FETCH_USER';
   export const FETCH_PATIENT = 'FETCH_PATIENT';
     export const FETCH_PATIENTS = 'FETCH_PATIENTS';
 
+export const RESET_USER = 'RESET_USER';
+export const RESET_USERS = 'RESET_USERS';
+export const RESET_PATIENT = 'RESET_PATIENT';
+export const RESET_PATIENTS = 'RESET_PATIENTS';
+
+export const FETCH_BODY_MEASURES = 'FETCH_BODY_MEASURES';
+
 //const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 //const API_KEY = '?key=NotNeededForCareCrew'; //everything after the equal
 const ID_CALL = '?patientId=574248c15417d00300d15d84';
@@ -115,6 +122,37 @@ export function fetchUser(id) {
           type: FETCH_PATIENTS,
           payload: request  };
         }
+
+export function fetchBodyMeasures(patientId){
+  const request = axios.get(`${ROOT_URL}${HEALTH_MEASURES}?patientId=${patientId}`); //backticks do string interpolation
+
+  return {
+    type: FETCH_BODY_MEASURES,
+    payload: request
+  }
+}
+
+export function resetUser() {
+  return {
+    type: RESET_USER,
+  }
+}
+export function resetUsers() {
+  return {
+    type: RESET_USERS,
+  }
+}
+export function resetPatients() {
+  return {
+    type: RESET_PATIENTS,
+  }
+}
+export function resetPatient() {
+  return {
+    type: RESET_PATIENT,
+  }
+}
+
 
 // =================================================================
 //

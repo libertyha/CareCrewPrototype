@@ -59,7 +59,7 @@ return <div style={headerContainer}>
           </div>
           <div style={headerBottom}>
             <div style = {headerDate}><h3>{weekDay}, {day} {monthString} {year}</h3></div>
-            <div style = {headerPatientName}><h3> Care client: {this.props.patient[0]._id} </h3></div>
+            <div style = {headerPatientName}><h3> Care client: {this.props.patient[0].firstName} {this.props.patient[0].lastName} </h3></div>
           </div>
         </div>
 

@@ -14,6 +14,7 @@ import ProgressNotesReducer from './reducer_progress_notes';
 import NotificationsReducer from './reducer_notifications';
 import ShiftRequestCountReducer from './reducer_incr_decr_shift_requests';
 import AddProgressNote from './reducer_add_progress_note';
+import BodyMeasuresReducer from './reducer_body_measures';
 
 const rootReducer = combineReducers({
   //any key set below (key: ReducerName) ends up as a key on our global state
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   notifications: NotificationsReducer,
   progressnotes: ProgressNotesReducer,
   shiftrequest: ShiftRequestCountReducer,
-  addprogressnote: AddProgressNote
+  addprogressnote: AddProgressNote,
+  bodyMeasures: BodyMeasuresReducer
 });
 
 export default rootReducer;

@@ -7,9 +7,19 @@ import { bindActionCreators } from 'redux';
 import { fetchPatientsByUser } from '../actions/index';
 import { fetchUser } from '../actions/index';
 import { fetchUsers } from '../actions/index';
+import { resetUser } from '../actions/index';
+import { resetPatient } from '../actions/index';
+import { resetPatients } from '../actions/index';
 const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
 
 export default class DemoStart extends Component {
+  componentWillMount() {
+    this.props.resetUser();
+    this.props.resetPatient();
+    this.props.resetPatients();
+
+  };
+
   onUserSelect(id) {
     console.log('get user Name using' + id);
     this.props.fetchUser(id);
@@ -22,7 +32,6 @@ export default class DemoStart extends Component {
   };
 
   render() {
-    if (!this.props.user) {
     return (
       <div className="Well" style={wellStyles}>
     <ul>
@@ -34,18 +43,11 @@ export default class DemoStart extends Component {
     <Button onClick={() => this.onUserSelect('574ceeaa0a6a781a00ffc856')} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
 </Link>
 
-<Button onClick={() => this.onUserSelect('574ceec10a6a781a00ffc857')} bsStyle ="primary" bsSize="large" block>Test (caretaker)</Button>
-
-
     </ul>
       </div> //<img src={'http://www.clker.com/cliparts/P/Q/t/5/E/r/white-stick-figure.svg'} alt="human figure">
 
     );
     }
-    return(
-      <div> Should work {console.log(this.props.user[0].firstName)}</div>
-    )
-  }
 }
 function mapStateToProps(state){
   return{
@@ -55,6 +57,6 @@ function mapStateToProps(state){
     };
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchUser: fetchUser, fetchUsers: fetchUsers, fetchPatientsByUser: fetchPatientsByUser}, dispatch);
+  return bindActionCreators({fetchUser: fetchUser, fetchUsers: fetchUsers, fetchPatientsByUser: fetchPatientsByUser, resetUser: resetUser, resetPatient: resetPatient, resetPatients: resetPatients}, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DemoStart);
