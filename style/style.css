@@ -71,3 +71,99 @@ body {
 #manHead:hover{
   fill:#F1F1F2;
 }
+
+.body-class {
+    background-color: #80CDC4;
+}
+.app-class {
+    background-color: #80CDC4;
+}
+.form-class {
+    background-color: #80CDC4;
+}
+.notification-class {
+    width: 300px;
+}
+.my-list-group-item {
+    background-color: #80CDC4;
+}
+.vital-signs-div {
+    margin: 30px 0px 30px 0px;
+    background-color: #f1f1f2;
+    height: 100px;
+    text-align: center;
+    padding-top:    40px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.vital-signs-label {
+    position: absolute;
+    top:  3px;
+    left: 3px;
+}
+.btn-vital-signs {
+    background-color: white;
+    border: 1px solid black;
+    margin: 0px 80px 0px 0px;
+    /* line-height: 100px; */
+}
+.task-div {
+    background: none;
+    /*background-color: #C8A2C8; */
+    background-color: #BFB0C4;
+    box-shadow: 5px 5px 2px #888888;
+    /* padding: 10px 10px 10px 10px; */
+    padding: 5px 5px 5px 5px;
+    /* margin: 0px 20px 20px 20px; */
+}
+.task-button-right {
+    float: right;
+}
+.progress-notes-list {
+    height: 500px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+.progress_note_outer_div {
+    margin: 30px 0px 100px 0px;
+    /*
+    text-align: center;
+    padding-top:    40px;
+    padding-bottom: 20px;
+    */
+    /* border: 1px solid black; */
+    height: 470px;
+    position: relative;
+
+}
+.progress_note_inner_div {
+    margin: 30px 0px 30px 0px;
+    background-color: #f6f6f6;
+    border: 1px solid black;
+    height: 470px;
+    width: 400px;
+    top: 3px;
+    right: 3px;
+    padding: 10px 10px 10px 10px;
+    /*
+    text-align: center;
+    padding-top:    40px;
+    padding-bottom: 20px;
+    */
+    position: absolute;
+
+}
+.add-progress-note-body {
+    height: 350px;
+    width: 350px;
+    rows: 100;
+    cols: 100;
+    margin: 10px 0px 10px 0px;
+}
+.btn-progress-note {
+    background-color: white;
+    border: 1px solid black;
+    margin: 5px 5px 5px 0px;
+    width: 50%;
+    /* line-height: 100px; */
+}
