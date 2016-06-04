@@ -35,12 +35,12 @@ export default class DemoStart extends Component {
     return (
       <div className="Well" style={wellStyles}>
     <ul>
-               <Link  to="/myPatients">
-    <Button onClick={() => this.onUserSelect('574502bbffbe460300638e25')} bsStyle ="primary" bsSize="large" block>I am Gloria (caretaker)</Button>
+               <Link  to="/myClients">
+    <Button onClick={() => this.onUserSelect('5751f5c16dfed61a00f0e015')} bsStyle ="primary" bsSize="large" block>I am Gloria (caretaker)</Button>
 </Link>
 <br></br>
- <Link  to="/myPatients">
-    <Button onClick={() => this.onUserSelect('574ceeaa0a6a781a00ffc856')} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
+ <Link  to="/myFamily">
+    <Button onClick={() => this.onUserSelect('5751f5486dfed61a00f0e014')} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
 </Link>
 
     </ul>

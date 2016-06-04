@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux';
 
-const headerContainer = {'height': '150px'}
-const headerTop = {'position':'relative', 'width':'100%', 'background-color': '#FFFFFF', 'height': '100px'}
+const headerContainer = {'height': '150px', 'background-color': '#FFFFFF',}
+const headerTop = {'position':'relative', 'width':'100%', 'height': '100px'}
 const headerLogo = {'float': 'left','display': 'inline-block', 'height': '100%'}
 const headerUserName = {'display': 'inline-block', 'float': 'left','position': 'relative', 'top': '30%'}
 const headerLogOut = {'float': 'right','display': 'inline-block','position': 'relative', 'top': '30%'}
@@ -31,7 +31,7 @@ export default class Header extends Component {
 if(!this.props.user){
   return <div style={headerContainer}>
             <div style={headerTop}>
-              <img style={headerLogo} src={require('../img/carecrewLogo.png')}/>
+              <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
               <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
             </div>
             <div style={headerBottom}>
@@ -42,7 +42,7 @@ if(!this.props.user){
 if(!this.props.patient){
   return <div style={headerContainer}>
             <div style={headerTop}>
-              <img style={headerLogo} src={require('../img/carecrewLogo.png')}/>
+              <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
               <div style ={headerUserName} ><h4> Logged in as: {this.props.user[0].firstName} </h4></div>
               <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
             </div>
@@ -53,7 +53,7 @@ if(!this.props.patient){
 }
 return <div style={headerContainer}>
           <div style={headerTop}>
-            <img style={headerLogo} src={require('../img/carecrewLogo.png')}/>
+            <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
             <div style ={headerUserName} ><h4>{this.props.user[0].firstName} </h4></div>
             <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
           </div>

@@ -30,12 +30,12 @@ export default class RadioButtons extends Component {
 
        const painListRendered = this.props.painList.map((pain) => {
          var isChecked = pain.name === this.state.defaultPain;
-         return <RadioItem itemToSelect = {pain.lable} radioSelect = {() => this.getPainChoice(pain)} id = {pain.name} key = {pain.name} radioGroup = {pain.group} defaultChecked = {isChecked}/>
+         return <RadioItem itemToSelect = {pain.label} radioSelect = {() => this.getPainChoice(pain)} id = {pain.name} key = {pain.name} radioGroup = {pain.group} defaultChecked = {isChecked}/>
        });
 
        const severityListRendered = this.props.severityList.map((severity) => {
          var isChecked = severity.name === this.state.defaultSeverity;
-         return <RadioItem itemToSelect = {<img src={severity.test}/>} radioSelect = {() => this.getSeverityChoice(severity)} id = {severity.name} key = {severity.name} radioGroup = {severity.group} defaultChecked = {isChecked}/>
+         return <RadioItem itemToSelect = {<img src={severity.img}/>} radioSelect = {() => this.getSeverityChoice(severity)} id = {severity.name} key = {severity.name} radioGroup = {severity.group} defaultChecked = {isChecked}/>
        });
 
      if(!this.props.bodyPart){
@@ -50,8 +50,8 @@ export default class RadioButtons extends Component {
        </ul>
        <h3> Selected Values: </h3>
           <ul>
-            <li>{this.props.bodyPart.lable}</li>
-            <li>Value of the input: {this.props.activePain.lable}</li>
+            <li>{this.props.bodyPart.label}</li>
+            <li>Value of the input: {this.props.activePain.label}</li>
             <li>Severity: {this.props.activeSeverity.name} </li>
           </ul>
        </div>

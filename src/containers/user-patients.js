@@ -5,42 +5,49 @@ import { fetchPatient } from '../actions/index';
 import { Link } from 'react-router';
 import { resetPatient } from '../actions/index';
 
+//use the router to figure out what to show
+
 export default class UserPatients extends Component {
   constructor(props){
     super(props);
   }
   componentWillMount(){
       this.props.resetPatient();
+      console.log(this.props.routes[1].path);
   }
   goToPatient(thisID){
      console.log('you clicked a patient');
      console.log(thisID);
      this.props.fetchPatient(thisID);
    }
-  renderPatients() {
+  renderPatients(goToRoute) {
+    console.log(this.props.patients[0].firstName);
       return this.props.patients.map((patient) => {
           return (
-           <Link  to="/SymptomTrackerReport"><li className="list-group-item" onClick={() => this.goToPatient(patient._id)}  key={patient._id}>
+           <Link  to={goToRoute}><li className="list-group-item" onClick={() => this.goToPatient(patient._id)}  key={patient._id}>
                 <span className="pull-xi-right">{patient.firstName}</span>
                 <strong>{patient.lastName}</strong>
             </li></Link>);});}
 
     render() {
+      //future: put in case for server
       if(!this.props.user){
-          return <div> Fetching your account </div>
+             return <div> Fetching your account </div>
+         }
+         if(!this.props.patients[0]){
+           return <div> Fetching your clients </div>
+         }
+      if(this.props.routes[1].path == 'myFamily'){
+        return <div>   {this.renderPatients("/SymptomTrackerReport")} <h2> My family members</h2> </div>
+
       }
-      if(!this.props.patients[0]){
-        return <div> Fetching your clients </div>
-      }
-      if(!this.props.patient){
-        return <div>
-          {this.renderPatients()}
-        </div>
+      if(this.props.routes[1].path == 'myClients'){
+        return <div> {this.renderPatients("/caretakerFeatures")}<h2> My care clients</h2> </div>
+
       }
       else{
       return <div>
         {this.renderPatients()}
-       the current patient is {this.props.patient[0].firstName}
       </div>
       }
     }

@@ -1,7 +1,7 @@
 export default function(){
   return [
-    {name: 'pain', lable: 'Pain', group: 'bodyTracker'},
-    {name: 'numb', lable: 'Numbness', group: 'bodyTracker'},
-    {name: 'swell', lable: 'Swelling', group: 'bodyTracker'}
+    {name: 'pain', label: 'Pain', group: 'bodyTracker'},
+    {name: 'numb', label: 'Numbness', group: 'bodyTracker'},
+    {name: 'swell', label: 'Swelling', group: 'bodyTracker'}
   ]
 }

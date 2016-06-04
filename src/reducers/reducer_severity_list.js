@@ -1,8 +1,9 @@
 export default function(){
   return [
-    {name: '0', imgTag: 'severity0.jpg', group: 'painSeverity', test: require('../img/severity0.jpg')},
-      {name: '1', imgTag: 'severity1.jpg', group: 'painSeverity', test: require('../img/severity1.jpg')},
-      {name: '2', imgTag: 'severity2.jpg', group: 'painSeverity', test: require('../img/severity2.jpg')},
-        {name: '3', imgTag: 'severity3.jpg', group: 'painSeverity', test: require('../img/severity3.jpg')},
+    {name: '0', group: 'painSeverity', img: require('../img/Emo_NoPain.png'), selectedImg: require('../img/Emo_NoPainSel.png')},
+    {name: '1', group: 'painSeverity', img: require('../img/Emo_Mild.png'), selectedImg: require('../img/Emo_MildSel.png')},
+    {name: '2', group: 'painSeverity', img: require('../img/Emo_Moderate.png'), selectedImg: require('../img/Emo_ModerateSel.png')},
+    {name: '3', group: 'painSeverity', img: require('../img/Emo_Severe.png'), selectedImg: require('../img/Emo_SevereSel.png')},
+    {name: '4', group: 'painSeverity', img: require('../img/Emo_Excruciating.png'), selectedImg: require('../img/Emo_ExcruciatingSel.png')},
   ]
 }

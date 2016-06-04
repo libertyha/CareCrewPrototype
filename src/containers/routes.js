@@ -14,7 +14,7 @@ export default (
     <Route path="SymptomTrackerReport" component={BodyReport} />
     <Route path="myClients" component={UserPatients} />
     <Route path="myFamily" component={UserPatients} />
-    <Route path="demoStart" component={DemoStart} />
+    <Route path="careCentral" component={DemoStart} />
     <Route path="caretakerFeatures" component={caretakerOptions} />
     <Route path='/shift' component={ShiftTaskListAndNotifications} />
   </Route>
