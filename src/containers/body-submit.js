@@ -17,38 +17,41 @@ export default class BodySubmit extends Component {
     console.log('This would be a good time to call an action creator to fetch posts');
 
   };
-
-
 onClickSubmit(){
    this.setState({submitBodyPart: this.props.bodyPart.id})
    this.setState({submitPainType: this.props.activePain.name})
    this.setState({submitSeverity: this.props.activeSeverity.name})
    this.setState({submitClicked: true})
-   this.postTrackData()
+   this.insertTrackData()
+   console.log(this.state.submitPainType);
+   console.log(this.state.submitSeverity);
 };
-postTrackData(){
-       request
-           .post('http://carecrewhq.herokuapp.com/careCrew/users')
-           .accept("application/json")
-           .set("Content-Type", "application/json")
-          // .send(JSON.stringify(body, null, "   "))
+insertTrackData(){
+  var body = {
+          bodyPart: this.props.bodyPart.id,
+          measurementUnit: this.props.activePain.name,
+          measurement: this.props.activeSeverity.name,
+          patientId: "574248c15417d00300d15d84",
+      };
 
-           .send('{"firstName":"DannyReq",' +
-               '"lastName":"LastReq",' +
-               '"email":"req@somereq.com",' +
-               '"address":"123 Main St"' +
-               '}')
+  request
+      .post('http://carecrewhq.herokuapp.com/careCrew/healthMeasures')
+      .accept("application/json")
+      .set("Content-Type", "application/json")
+    //  .send(body)
+    .send(JSON.stringify(body,null,"   "))
+          .end(function(err, res){
+              if (err || !res.ok) {
+              alert('Oh no! error');
+                  alert(JSON.stringify(body, null, "   "));
+              } else {
+                  alert('yay got ' + JSON.stringify(res.body));
+              }
+        })
+}
 
-           .end(function(err, res){
-               if (err || !res.ok) {
-               alert('Oh no! error');
-                   alert(body.firstName);
-                   alert(JSON.stringify(body, null, "   "));
-               } else {
-                   alert('yay got ' + JSON.stringify(res.body));
-               }
-         })
-};
+
+
 onClickReset(){
    this.setState({submitBodyPart: "none"})
    this.setState({submitPainType: "none"})
@@ -76,18 +79,8 @@ renderPosts() {
       return  <button onClick={() => this.onClickSubmit()}> Submit Here </button>
     }
 
-    const body = {
-        firstName: "DannyTest77",
-        lastName: "LastTest77",
-        email: "d77@test.com",
-        address: "77 test st",
-    };
-
     return <div>
-                    <h3> Things to submit to server:</h3>
-                    <ul><li>{this.state.submitBodyPart}</li>
-                    <li>{this.state.submitPainType}</li>
-                    <li>{this.state.submitSeverity}</li></ul>
+                    <h3> {this.state.submitBodyPart}</h3>
                     <button onClick={() => this.onClickReset()}> Reset </button>
                  </div>
 
@@ -96,6 +89,7 @@ renderPosts() {
 
 function mapStateToProps(state){
   return{
+    patient: state.patients.patient,
     bodyPart: state.activeBodyPart,
     activePain: state.activePain,
     activeSeverity: state.activeSeverity,
