@@ -11,8 +11,8 @@ export default class BodyReport extends Component {
     componentWillMount() {
     };
     getBodyMeasures(){
-      this.props.fetchBodyMeasures('574248c15417d00300d15d84')
-      //this.props.fetchBodyMeasures(this.props.user[0]._id)
+      this.props.fetchBodyMeasures(this.props.patient[0]._id)
+      console.log('trying to report on patient pain for patient ' + this.props.patient[0]._id+ ' ' + this.props.patient[0].firstName)
        this.setState({isBodyMeasuresCalled: true})
     };
     renderBodyMeasures() {
@@ -44,7 +44,8 @@ export default class BodyReport extends Component {
     function mapStateToProps(state){
       return{
         bodyMeasures: state.bodyMeasures.all,
-        user: state.users.user
+        user: state.users.user,
+        patient: state.patients.patient
         };
     }
     function mapDispatchToProps(dispatch) {

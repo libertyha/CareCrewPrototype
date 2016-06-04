@@ -20,6 +20,7 @@ export default class RadioButtons extends Component {
   };
   getSeverityChoice(severity){
       this.props.selectSeverity(severity);
+
   };
 
   componentWillMount(){

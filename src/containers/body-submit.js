@@ -23,15 +23,15 @@ onClickSubmit(){
    this.setState({submitSeverity: this.props.activeSeverity.name})
    this.setState({submitClicked: true})
    this.insertTrackData()
-   console.log(this.state.submitPainType);
-   console.log(this.state.submitSeverity);
+   console.log(this.props.patient[0].firstName)
 };
 insertTrackData(){
   var body = {
           bodyPart: this.props.bodyPart.id,
           measurementUnit: this.props.activePain.name,
           measurement: this.props.activeSeverity.name,
-          patientId: "574248c15417d00300d15d84",
+          patientId: this.props.patient[0]._id,
+          userIds: this.props.user[0]._id
       };
 
   request
@@ -49,9 +49,6 @@ insertTrackData(){
               }
         })
 }
-
-
-
 onClickReset(){
    this.setState({submitBodyPart: "none"})
    this.setState({submitPainType: "none"})
@@ -68,21 +65,16 @@ renderPosts() {
 
   render() {
     if(!this.props.bodyPart){
-      return <div><div>List of blog posts</div>
-      <ul className="list-group">
-         {this.renderPosts()}
-      </ul>
-
-      </div> ;
+      return <div> </div> ;
     }
     if(!this.state.submitClicked){
       return  <button onClick={() => this.onClickSubmit()}> Submit Here </button>
     }
 
     return <div>
-                    <h3> {this.state.submitBodyPart}</h3>
-                    <button onClick={() => this.onClickReset()}> Reset </button>
-                 </div>
+    <h3> {this.state.submitBodyPart}</h3>
+        <button onClick={() => this.onClickReset()}> Reset </button>
+    </div>
 
   }
 }
@@ -93,7 +85,8 @@ function mapStateToProps(state){
     bodyPart: state.activeBodyPart,
     activePain: state.activePain,
     activeSeverity: state.activeSeverity,
-    posts:  state.posts.all
+    posts:  state.posts.all,
+    user: state.users.user
     };
 }
 function mapDispatchToProps(dispatch) {
