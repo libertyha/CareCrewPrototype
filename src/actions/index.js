@@ -37,6 +37,14 @@ export const ADD_PROGRESS_NOTE = 'ADD_PROGRESS_NOTE';
 const PATIENT = 'patientId=574248c15417d00300d15d84';
 
 
+export function setActivePage(activePage){
+
+  return{
+    type: 'ACTIVE_PAGE',
+    payload: activePage
+  }
+}
+
 
 export function selectBodyPart(bodyPart){
   //selectBook is an ActionCreator, it needs to return and action, an object with type property
@@ -114,7 +122,7 @@ export function fetchUser(id) {
         type: FETCH_PATIENT,
         payload: request  };
       }
-      
+
 
       export function fetchPatientsByUser(userId) {
         const request = axios.get(`${ROOT_URL}/patients?userIds=${userId}`);
@@ -422,4 +430,3 @@ export function addProgressNoteToGlobalState(progressNote) {
   };
 
 }
-

@@ -4,8 +4,14 @@ import RadioItem from './radioItem';
 import BodyLink from '../containers/body-link';
 import RadioButtons from '../containers/radio-buttons';
 import SubmitBody from '../containers/body-submit';
+import { setActivePage } from '../actions/index';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-export default class BodyInput extends Component {
+class BodyInput extends Component {
+  componentWillMount() {
+      this.props.setActivePage("Add a symptom");
+  };
   render() {
     return (
       <div>
@@ -17,3 +23,7 @@ export default class BodyInput extends Component {
     );
   }
 }
+function mapDispatchToProps(dispatch) {
+return bindActionCreators({setActivePage: setActivePage}, dispatch);
+}
+export default connect(null, mapDispatchToProps)(BodyInput);

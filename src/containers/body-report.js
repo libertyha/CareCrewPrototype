@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { fetchBodyMeasures } from '../actions/index';
+import { setActivePage } from '../actions/index';
 
 export default class BodyReport extends Component {
     constructor(props){
@@ -9,6 +10,7 @@ export default class BodyReport extends Component {
       this.state = {isBodyMeasuresCalled: false};
     }
     componentWillMount() {
+        this.props.setActivePage("Run report");
     };
     getBodyMeasures(){
       this.props.fetchBodyMeasures(this.props.patient[0]._id)
@@ -49,6 +51,6 @@ export default class BodyReport extends Component {
         };
     }
     function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchBodyMeasures: fetchBodyMeasures}, dispatch);
+    return bindActionCreators({setActivePage: setActivePage, fetchBodyMeasures: fetchBodyMeasures}, dispatch);
     }
     export default connect(mapStateToProps, mapDispatchToProps)(BodyReport);

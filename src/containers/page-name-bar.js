@@ -5,12 +5,12 @@ const nameBarContainer = {'paddingTop': '10px', 'paddingBottom': '10px', 'margin
 
 export default class PageNameBar extends Component {
   render() {
-    return <div style={nameBarContainer}><h3> Page Name </h3></div>
+    return <div style={nameBarContainer}><h3> {this.props.pageName} </h3></div>
   }
 }
 function mapStateToProps(state){
   return{
-    user: state.users.user,
+    pageName: state.activePage,
     };
 }
 export default connect(mapStateToProps)(PageNameBar);

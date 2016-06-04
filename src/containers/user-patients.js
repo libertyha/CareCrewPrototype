@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import { fetchPatient } from '../actions/index';
 import { Link } from 'react-router';
 import { resetPatient } from '../actions/index';
+import { setActivePage } from '../actions/index';
 
 //use the router to figure out what to show
 
@@ -14,6 +15,13 @@ export default class UserPatients extends Component {
   componentWillMount(){
       this.props.resetPatient();
       console.log(this.props.routes[1].path);
+      if(this.props.routes[1].path == 'myClients'){
+        this.props.setActivePage("My care clients");
+      }
+      else if(this.props.routes[1].path == 'myFamily'){
+        this.props.setActivePage("My family members");
+      }
+
   }
   goToPatient(thisID){
      console.log('you clicked a patient');
@@ -38,11 +46,11 @@ export default class UserPatients extends Component {
            return <div> Fetching your clients </div>
          }
       if(this.props.routes[1].path == 'myFamily'){
-        return <div>   {this.renderPatients("/SymptomTrackerReport")} <h2> My family members</h2> </div>
+        return <div>   {this.renderPatients("/SymptomTrackerReport")}</div>
 
       }
       if(this.props.routes[1].path == 'myClients'){
-        return <div> {this.renderPatients("/caretakerFeatures")}<h2> My care clients</h2> </div>
+        return <div> {this.renderPatients("/caretakerFeatures")}</div>
 
       }
       else{
@@ -60,6 +68,6 @@ export default class UserPatients extends Component {
         };
     }
     function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchPatient: fetchPatient, resetPatient: resetPatient}, dispatch);
+    return bindActionCreators({setActivePage: setActivePage, fetchPatient: fetchPatient, resetPatient: resetPatient}, dispatch);
     }
     export default connect(mapStateToProps, mapDispatchToProps)(UserPatients);

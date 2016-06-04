@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
-
+import { setActivePage } from '../actions/index';
 
 import { reduxForm, addArrayValue } from 'redux-form';
 import { reducer as formReducer } from 'redux-form';
@@ -41,7 +41,7 @@ export const fields = [
 class ShiftTaskListAndNotifications extends Component {
   constructor(props) {
     super(props);
-
+  this.props.setActivePage("Today's tasks");
     // this.renderTasks = this.renderTasks.bind(this);
 
   }
@@ -557,7 +557,8 @@ function mapDispatchToProps(dispatch) {
                               fetchProgressNotes: fetchProgressNotes,
                               submitTasks: submitTasks,
                               incrDecrShiftSubmitRequestCount: incrDecrShiftSubmitRequestCount,
-                              addProgressNoteToGlobalState: addProgressNoteToGlobalState
+                              addProgressNoteToGlobalState: addProgressNoteToGlobalState,
+                              setActivePage: setActivePage
                             }, dispatch);
 }
 

@@ -10,6 +10,7 @@ import { fetchUsers } from '../actions/index';
 import { resetUser } from '../actions/index';
 import { resetPatient } from '../actions/index';
 import { resetPatients } from '../actions/index';
+import { setActivePage } from '../actions/index';
 const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
 
 export default class DemoStart extends Component {
@@ -17,7 +18,7 @@ export default class DemoStart extends Component {
     this.props.resetUser();
     this.props.resetPatient();
     this.props.resetPatients();
-
+    this.props.setActivePage("Begin as...");
   };
 
   onUserSelect(id) {
@@ -57,6 +58,6 @@ function mapStateToProps(state){
     };
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchUser: fetchUser, fetchUsers: fetchUsers, fetchPatientsByUser: fetchPatientsByUser, resetUser: resetUser, resetPatient: resetPatient, resetPatients: resetPatients}, dispatch);
+  return bindActionCreators({fetchUser: fetchUser, fetchUsers: fetchUsers, fetchPatientsByUser: fetchPatientsByUser, resetUser: resetUser, resetPatient: resetPatient, resetPatients: resetPatients, setActivePage: setActivePage}, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DemoStart);
