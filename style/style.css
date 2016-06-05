@@ -78,9 +78,6 @@ body {
 .app-class {
     background-color: #80CDC4;
 }
-.form-class {
-    background-color: #80CDC4;
-}
 .notification-class {
     width: 300px;
 }
@@ -89,7 +86,6 @@ body {
 }
 .vital-signs-div {
     margin: 30px 0px 30px 0px;
-    background-color: #f1f1f2;
     height: 100px;
     text-align: center;
     padding-top:    40px;
@@ -119,11 +115,6 @@ body {
 .task-button-right {
     float: right;
 }
-.progress-notes-list {
-    height: 500px;
-    overflow-y: scroll;
-    border: 1px solid black;
-}
 .progress_note_outer_div {
     margin: 30px 0px 100px 0px;
     /*
@@ -134,7 +125,6 @@ body {
     /* border: 1px solid black; */
     height: 470px;
     position: relative;
-
 }
 .progress_note_inner_div {
     margin: 30px 0px 30px 0px;
