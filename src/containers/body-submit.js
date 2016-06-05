@@ -4,26 +4,37 @@ import request from 'superagent';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
 import { createSymptomInstance } from '../actions/index';
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 export default class BodySubmit extends Component {
   constructor(props){
     super(props);
     this.state = {submitBodyPart:"none", //used to make first list option the default selected radio button
     submitPainType: "none",  //used to make first list option the default selected active pain option
+    patientName: "none",
     submitSeverity: "none", //used to make first list option the default selected radio button
     submitClicked: false
   };}
   componentWillMount() {
-    console.log('This would be a good time to call an action creator to fetch posts');
-
   };
-onClickSubmit(){
-   this.setState({submitBodyPart: this.props.bodyPart.id})
-   this.setState({submitPainType: this.props.activePain.name})
+
+  closeModal() {
+    this.setState({ showModal: false });
+  };
+
+  openModal() {
+   this.setState({showModal: true });
+   this.setState({submitBodyPart: this.props.bodyPart.label})
+   this.setState({submitPainType: this.props.activePain.label})
    this.setState({submitSeverity: this.props.activeSeverity.name})
+   this.setState({patientName: this.props.patient[0].firstName})
+  };
+
+onClickSubmit(){
    this.setState({submitClicked: true})
    this.insertTrackData()
-   console.log(this.props.patient[0].firstName)
+   this.closeModal()
 };
 insertTrackData(){
   var body = {
@@ -45,36 +56,34 @@ insertTrackData(){
               alert('Error, submission was not successful');
                   alert(JSON.stringify(body, null, "   "));
               } else {
-                  alert('Successful submission ' + JSON.stringify(res.body));
+                //  alert('Successful submission ' + JSON.stringify(res.body));
               }
         })
 }
-onClickReset(){
-   this.setState({submitBodyPart: "none"})
-   this.setState({submitPainType: "none"})
-   this.setState({submitSeverity: "none"})
-   this.setState({submitClicked: false})
-};
-renderPosts() {
-  return this.props.posts.map((post) => {
-    return (
-      <li className="list-group-item" key={post.createdDate}>
-        <span className="pull-xi-right">{post.measurement}</span>
-        <strong>{post.measurementUnit}</strong>
-      </li>);});}
+
 
   render() {
     if(!this.props.bodyPart){
       return <div> </div> ;
     }
-    if(!this.state.submitClicked){
-      return  <button onClick={() => this.onClickSubmit()}> Submit Here </button>
-    }
+    return <div>  <Button bsStyle="primary" bsSize="large" onClick={() => this.openModal()}>Submit</Button>
 
-    return <div>
-    <h3> {this.state.submitBodyPart}</h3>
-        <button onClick={() => this.onClickReset()}> Reset </button>
-    </div>
+        <Modal show={this.state.showModal} onHide={() => this.closeModal()} backdrop={false}>
+          <Modal.Header >
+          <Modal.Title>Please confirm that you wish to submit the following:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <hr />
+            <p>{this.state.patientName} has <b>{this.state.submitPainType}</b>, located on the <b>{this.state.submitBodyPart}</b>.
+            The severity of the <b>{this.state.submitPainType}</b> is <b>{this.state.submitSeverity}</b></p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={() => this.onClickSubmit()}>Confirm</Button>
+              <Button onClick={() => this.closeModal()}>Cancel</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+
 
   }
 }

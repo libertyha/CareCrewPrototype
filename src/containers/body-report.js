@@ -26,8 +26,8 @@ export default class BodyReport extends Component {
       return this.props.bodyMeasures.map((bodyMeasure) => {
         return (
         <tr><td> {bodyMeasure.bodyPart} </td>
-          <td>{bodyMeasure.measurement} </td>
           <td>{bodyMeasure.measurementUnit} </td>
+          <td>{bodyMeasure.measurement} </td>
           <td>{bodyMeasure.updatedDate.substring(0,10)}</td></tr>);
       });
     }

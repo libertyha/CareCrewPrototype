@@ -40,7 +40,7 @@ export default class RadioButtons extends Component {
        });
 
      if(!this.props.bodyPart){
-       return <div>Select a body part: </div> ;
+       return <div></div> ;
      }
        return <div>
        <ul className="col-md-4 list-group">
@@ -49,12 +49,6 @@ export default class RadioButtons extends Component {
        <ul className="col-md-4 list-group">
          {severityListRendered}
        </ul>
-       <h3> Selected Values: </h3>
-          <ul>
-            <li>{this.props.bodyPart.label}</li>
-            <li>Value of the input: {this.props.activePain.label}</li>
-            <li>Severity: {this.props.activeSeverity.name} </li>
-          </ul>
        </div>
   }
 }
