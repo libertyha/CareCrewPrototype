@@ -56,18 +56,13 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
-  //
-  //   onAddProgressNote
-  //
+  // == onAddProgressNote
   // ===============================================================
   onAddProgressNote(event) {
 
     console.log("inside onAddProgressNote()");
-
     event.preventDefault()  // prevent form submission
-
     var text = this.props.fields.progress_note.note_body.value;
-
     var date = new Date();
 
     var progressNote =
@@ -86,9 +81,7 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
-  //
   //   onTaskButtonClick
-  //
   // ===============================================================
   onTaskButtonClick(event) {
      event.preventDefault()  // prevent form submission
@@ -97,9 +90,7 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
-  //
-  //   onVitalSignsClick
-  //
+  // == onVitalSignsClick
   // ===============================================================
   onVitalSignsClick(event) {
      event.preventDefault()  // prevent form submission
@@ -108,31 +99,23 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
-  //
-  //   onAddVideoClick
-  //
+  // == onAddVideoClick
   // ===============================================================
   onAddVideoClick(event) {
      event.preventDefault()  // prevent form submission
      alert("Video upload coming soon... ");
-
   }
 
   // ===============================================================
-  //
-  //   onAddPhotoClick
-  //
+  // == onAddPhotoClick
   // ===============================================================
   onAddPhotoClick(event) {
      event.preventDefault()  // prevent form submission
      alert("Photo upload coming soon... ");
-
   }
 
   // ===============================================================
-  //
-  //   onSubmit
-  //
+  // == onSubmit
   // ===============================================================
    onSubmit(props) {
     console.log('inside onSubmit()');
@@ -171,16 +154,11 @@ class ShiftTaskListAndNotifications extends Component {
 
       }
     });
-
     // this.props.submitNotications();
-
    }
 
-
   // ===============================================================
-  //
   //   renderNotifications
-  //
   // ===============================================================
 
   renderNotifications(notifications) {
@@ -343,11 +321,8 @@ class ShiftTaskListAndNotifications extends Component {
     return temp;
   }
 
-
   // ===============================================================
-  //
-  //   renderProgressNotes
-  //
+  // == renderProgressNotes
   // ===============================================================
   renderProgressNotes(progress_notes) {
 
@@ -386,9 +361,7 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
-  //
-  //   render
-  //
+  // == render
   // ===============================================================
   render() {
 

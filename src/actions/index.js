@@ -161,239 +161,68 @@ export function resetPatient() {
   }
 }
 
-
 // =================================================================
-//
-//    submitShiftForm
-//
+// == submitShiftForm
 // =================================================================
 export function submitTasks(task) {
-
   console.log('inside submitTasks');
-
-  console.log('task');
-  console.log(task);
-
-  // PUT http://carecrewhq.herokuapp.com/careCrew/tasks/574b7f8264a1a8f52182eb9e
-
+  
   var data = {
     "status": task.status
   };
-
   var url = `${ROOT_URL}/tasks/${task._id}`;
-  console.log('url');
-  console.log(url);
-  console.log('data');
-  console.log(JSON.stringify(data));
-
   const request = axios.put(`${ROOT_URL}/tasks/${task._id}`, data);
-
-  //  Object {task1: true, task2: true, notification: "testing"}
-
+  
   return {
     type: SUBMIT_TASKS,
     payload: request
   };
-
 }
 
-
-
 // =================================================================
-//
-//    fetchTasks
-//
+// == fetchTasks
 // =================================================================
 export function fetchTasks(props) {
-  // const request = axios.post(url), props);
-  // const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-
-
   //  get tasks for specific patient
   const request = axios.get(`${ROOT_URL}/tasks${API_KEY}?${PATIENT}`);
-
-  //   All Tasks for patient      "patientId": "574248c15417d00300d15d84"
-
-  // [
-  //   {
-  //     "_id": "574b99919ef2e61a00a3a7b0",
-  //     "shortDesc": "Lunch - Soups",
-  //     "description": "Lunch - Soups (because of dentures)",
-  //     "patientId": "574248c15417d00300d15d84",
-  //     "__v": 0,
-  //     "updatedDate": "2016-05-30T01:38:25.753Z",
-  //     "createdDate": "2016-05-30T01:38:25.753Z",
-  //     "status": "new",
-  //     "tags": []
-  //   },
-  //   {
-  //     "_id": "574b9a0e9ef2e61a00a3a7b1",
-  //     "patientId": "574248c15417d00300d15d84",
-  //     "shortDesc": "Supplies - prescriptions are running out. need refill",
-  //     "description": "Supplies - prescriptions",
-  //     "__v": 0,
-  //     "updatedDate": "2016-05-30T01:40:30.183Z",
-  //     "createdDate": "2016-05-30T01:40:30.183Z",
-  //     "status": "new",
-  //     "tags": []
-  //   }
-  // ]
-
-
-// state === {
-//  form: {
-//    ShiftTaskListAndNotificationsForm: {
-//      tasks: [
-//        { id: 1,
-//          description: 'a description',
-//          date_scheduled: 05-26-2016,
-//          owner: 'Linda',
-//          complete: false
-//        }
-//      ],
-//      notifications: [
-//        { id: 1,
-//          description: 'b description',
-//          date_created: 05-26-2016,
-//          owner:  'Linda'
-//        }
-//      ]
-//    }
-//  }
-// }
-
-//  commented below out to test axios call to server
-
-// var request = {};
-
-// request["tasks"] =
-// [
-//   {id: '0', description: 'description of task 0', date_scheduled: 'May 23, 2016 11:00am', owner: 'Linda', completed: false},
-//   {id: '1', description: 'description of task 1', date_scheduled: 'May 23, 2016 3:00pm', owner: 'Linda', completed: false}
-// ];
-
-// request["notifications"] =
-// [
-//   {id: '0', description: 'Rose fell in the kitchen', date_created: 'May 23, 2016 11:00am', owner: 'Linda'},
-//   {id: '1', description: 'Rose did not like the soup at lunch', date_created: 'May 23, 2016 3:00pm', owner: 'Linda'}
-// ];
-
-  console.log("inside fetchTasks");
 
   return {
     type: FETCH_SHIFT,
     payload: request
   };
-
 }
 
-
 // =================================================================
-//
-//    fetchProgressNotes
-//
+// == fetchProgressNotes
 // =================================================================
 export function fetchProgressNotes(props) {
-  // const url = 'http://carecrewhq.herokuapp.com/careCrew/progressnotes?patientId=574248c15417d00300d15d84';
-  // const request = axios.get(`${ROOT_URL}/tasks${API_KEY}?${PATIENT}`);
-
   //  get tasks for specific patient
-  const url = 'http://carecrewhq.herokuapp.com/careCrew/notifications?patientId=574248c15417d00300d15d84';
-
-  // const request = axios.get(`${ROOT_URL}/notifications${API_KEY}?${PATIENT}`);
-  const request = axios.get(url);
-
-  // const request = axios.get(`${ROOT_URL}/notifications${API_KEY}?${PATIENT}`);
-  // const request = axios.get(url);
-
-  // var request = {};
-
-  // add fake data here
-
-  console.log("inside fetchProgressNotes");
+  const request = axios.get(`${ROOT_URL}/progressNotes`);
 
   return {
     type: FETCH_PROGRESS_NOTES,
     payload: request
   };
-
 }
 
-
 // =================================================================
-//
-//    fetchNotifications
-//
+// == fetchNotifications
 // =================================================================
-
 export function fetchNotifications(props) {
-  // const request = axios.post(url), props);
-  // const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-
-  //  get tasks for specific patient
   const url = 'http://carecrewhq.herokuapp.com/careCrew/notifications?patientId=574248c15417d00300d15d84';
-
-  // const request = axios.get(`${ROOT_URL}/notifications${API_KEY}?${PATIENT}`);
   const request = axios.get(url);
 
-  //   All Notifications for patient      "patientId": "574248c15417d00300d15d84"
-
-// state === {
-//  form: {
-//    ShiftTaskListAndNotificationsForm: {
-//      tasks: [
-//        { id: 1,
-//          description: 'a description',
-//          date_scheduled: 05-26-2016,
-//          owner: 'Linda',
-//          complete: false
-//        }
-//      ],
-//      notifications: [
-//        { id: 1,
-//          description: 'b description',
-//          date_created: 05-26-2016,
-//          owner:  'Linda'
-//        }
-//      ]
-//    }
-//  }
-// }
-
-//  commented below out to test axios call to server
-
-// var request = {};
-
-// request["tasks"] =
-// [
-//   {id: '0', description: 'description of task 0', date_scheduled: 'May 23, 2016 11:00am', owner: 'Linda', completed: false},
-//   {id: '1', description: 'description of task 1', date_scheduled: 'May 23, 2016 3:00pm', owner: 'Linda', completed: false}
-// ];
-
-// request["notifications"] =
-// [
-//   {id: '0', description: 'Rose fell in the kitchen', date_created: 'May 23, 2016 11:00am', owner: 'Linda'},
-//   {id: '1', description: 'Rose did not like the soup at lunch', date_created: 'May 23, 2016 3:00pm', owner: 'Linda'}
-// ];
-
   console.log("inside fetchNotifications");
-
   return {
     type: FETCH_NOTIFICATIONS,
     payload: request
   };
-
 }
 
-
 // =================================================================
-//
-//    incrDecrShiftSubmitRequestCount
-//
+// == incrDecrShiftSubmitRequestCount
 // =================================================================
-
 export function incrDecrShiftSubmitRequestCount(props) {
-
   console.log("inside incrDecrShiftSubmitRequestCount");
 
   var request = { incr_decr: props};
@@ -405,18 +234,12 @@ export function incrDecrShiftSubmitRequestCount(props) {
     type: INCR_DECR_SHIFT_REQUESTS,
     payload: request
   };
-
 }
 
-
 // =================================================================
-//
-//    addProgressNoteToGlobalState
-//
+// == addProgressNoteToGlobalState
 // =================================================================
-
 export function addProgressNoteToGlobalState(progressNote) {
-
   console.log("inside addProgressNoteToGlobalState");
 
   var request = { addprogressnote: true, progressNote: progressNote };
@@ -428,5 +251,4 @@ export function addProgressNoteToGlobalState(progressNote) {
     type: FETCH_PROGRESS_NOTES,
     payload: request
   };
-
 }
