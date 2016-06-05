@@ -303,16 +303,16 @@ class ShiftTaskListAndNotifications extends Component {
       );
     });
 
-    temp.push(
-          <div key={999999} className="list-group-item">
-            <div className="task-div">
-              <label>
-                  <PureInput type="checkbox"  field={tasks[0].completed} /> {'Click button to go to the Symptom Tracker'}
-              </label> <span className="task-button-right"><button className="btn-smx task-button-right"> <i/>details...</button></span>
-
-            </div>
-          </div>
-    );
+    // temp.push(
+    //       <div key={999999} className="list-group-item">
+    //         <div className="task-div">
+    //           <label>
+    //               <PureInput type="checkbox"  field={tasks[0].completed} /> {'Click button to go to the Symptom Tracker'}
+    //           </label> <span className="task-button-right"><button className="btn-smx task-button-right"> <i/>details...</button></span>
+    //
+    //         </div>
+    //       </div>
+    // );
 
     return temp;
   }

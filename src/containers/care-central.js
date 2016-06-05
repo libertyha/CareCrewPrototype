@@ -6,10 +6,13 @@ import {generateDemo} from '../actions/index';
 import { bindActionCreators } from 'redux';
 import {setFamily} from '../actions/index';
 import {setCaretaker} from '../actions/index';
-
+import { setActivePage } from '../actions/index';
 
 
 export default class Header extends Component {
+  componentWillMount() {
+    this.props.setActivePage("Welcome to the Care Crew Demo");
+  };
   generateUsers() {
     this.props.generateDemo()
     .then(() => {
@@ -18,7 +21,7 @@ export default class Header extends Component {
   render() {
   return <div>
   <Link  to="/startDemo">
-        <Button onClick={() => this.generateUsers()} bsStyle ="primary" bsSize="large" block>Start the Care Crew Demo (caretaker)</Button>
+        <Button onClick={() => this.generateUsers()} bsStyle ="primary" bsSize="large" block>Start the Demo</Button>
   </Link>
 
 
@@ -32,6 +35,6 @@ function mapStateToProps(state){
     };
 }
 function mapDispatchToProps(dispatch) {
-return bindActionCreators({ generateDemo: generateDemo, setFamily: setFamily, setCaretaker: setCaretaker}, dispatch);
+return bindActionCreators({ generateDemo: generateDemo, setFamily: setFamily, setCaretaker: setCaretaker, setActivePage: setActivePage}, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

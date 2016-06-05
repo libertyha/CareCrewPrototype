@@ -284,6 +284,9 @@ body {
   line-height: 1.428571429;
   color: #72727f;
   background-color: #f1f1f2;
+  position: absolute;
+  margin-left: 50%;
+  height: 100%;
 }
 input,
 button,
@@ -766,7 +769,8 @@ pre code {
 }
 .container {
   margin-right: auto;
-  margin-left: auto;
+  margin-left: -50%;
+  height: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
