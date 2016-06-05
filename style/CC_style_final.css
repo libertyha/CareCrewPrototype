@@ -5254,6 +5254,10 @@ a.list-group-item-danger.active:focus {
 	background-color: #84C0C3;
 	box-shadow: 1px 1px 1px #72727f;
 }
+
+.progress-notes-list {
+  padding-left: 0px;
+}
 ul.progress-notes-list li{
 	list-style-type: none;
 	background-color: #84C0C3;
