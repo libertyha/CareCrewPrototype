@@ -1,4 +1,4 @@
-import { FETCH_SHIFT } from '../actions/index';
+import { FETCH_TASKS } from '../actions/index';
 
   var INITIAL_STATE = { form: {}, shift: {} };
 
@@ -84,7 +84,7 @@ export default function(state = INITIAL_STATE, action) {
 
 
   switch(action.type) {
-  case FETCH_SHIFT:
+  case FETCH_TASKS:
 
     // return { ...state, all: action.payload };
     console.log("inside reducer_shift");

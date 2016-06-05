@@ -28,7 +28,7 @@ const API_KEY  = '';
 
 export const GENERATE_DEMO = 'GENERATE_DEMO';
 export const SUBMIT_TASKS = 'SUBMIT_TASKS';
-export const FETCH_SHIFT = 'FETCH_SHIFT';
+export const FETCH_TASKS = 'FETCH_TASKS';
 export const FETCH_PROGRESS_NOTES = 'FETCH_PROGRESS_NOTES';
 export const FETCH_NOTIFICATIONS = 'FETCH_NOTIFICATIONS';
 export const INCR_DECR_SHIFT_REQUESTS = 'INCR_DECR_SHIFT_REQUESTS';
@@ -181,17 +181,16 @@ export function resetPatient() {
 }
 
 // =================================================================
-// == submitShiftForm
+// == submitTasks
 // =================================================================
 export function submitTasks(task) {
-  console.log('inside submitTasks');
-
+  // TODO: do we need this var data?
   var data = {
     "status": task.status
   };
   var url = `${ROOT_URL}/tasks/${task._id}`;
   const request = axios.put(`${ROOT_URL}/tasks/${task._id}`, data);
-
+  
   return {
     type: SUBMIT_TASKS,
     payload: request
@@ -202,11 +201,10 @@ export function submitTasks(task) {
 // == fetchTasks
 // =================================================================
 export function fetchTasks(props) {
-  //  get tasks for specific patient
   const request = axios.get(`${ROOT_URL}/tasks${API_KEY}?${PATIENT}`);
 
   return {
-    type: FETCH_SHIFT,
+    type: FETCH_TASKS,
     payload: request
   };
 }
@@ -215,7 +213,6 @@ export function fetchTasks(props) {
 // == fetchProgressNotes
 // =================================================================
 export function fetchProgressNotes(props) {
-  //  get tasks for specific patient
   const request = axios.get(`${ROOT_URL}/progressNotes`);
 
   return {

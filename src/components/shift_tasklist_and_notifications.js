@@ -41,7 +41,7 @@ export const fields = [
 class ShiftTaskListAndNotifications extends Component {
   constructor(props) {
     super(props);
-  this.props.setActivePage("Today's tasks");
+  this.props.setActivePage("Care Checklist");
     // this.renderTasks = this.renderTasks.bind(this);
 
   }
@@ -248,14 +248,10 @@ class ShiftTaskListAndNotifications extends Component {
 
 
   // ===============================================================
-  //
-  //   renderTasks
-  //
+  // == renderTasks
   // ===============================================================
   renderTasks(tasks, onTaskButtonClick) {
-
     console.log("inside renderTask()");
-
     if (tasks.length === 0){
       return (
         <div>
@@ -440,7 +436,7 @@ class ShiftTaskListAndNotifications extends Component {
     return (
       <form className="form-class" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
-        <h3>Shift Task List section</h3>
+
         {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [], this.onTaskButtonClick)}
 
         <div className="vital-signs-div">
