@@ -32,7 +32,7 @@ if(!this.props.user){
   return <div style={headerContainer}>
             <div style={headerTop}>
               <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
-              <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
+              <div style={headerLogOut}><Link  to="/startDemo"> <h4> Log out</h4></Link></div>
             </div>
             <div style={headerBottom}>
               <div style = {headerDate}><h3>{weekDay}, {day} {monthString} {year}</h3></div>
@@ -44,7 +44,7 @@ if(!this.props.patient){
             <div style={headerTop}>
               <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
               <div style ={headerUserName} ><h4> Logged in as: {this.props.user[0].firstName} </h4></div>
-              <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
+              <div style={headerLogOut}><Link  to="/startDemo"> <h4> Log out</h4></Link></div>
             </div>
             <div style={headerBottom}>
               <div style = {headerDate}><h3>{weekDay}, {day} {monthString} {year}</h3></div>
@@ -55,7 +55,7 @@ return <div style={headerContainer}>
           <div style={headerTop}>
             <img style={headerLogo} src={require('../img/CareCrewLogo_130sq.png')}/>
             <div style ={headerUserName} ><h4>{this.props.user[0].firstName} </h4></div>
-            <div style={headerLogOut}><Link  to="/demoStart"> <h4> Log out</h4></Link></div>
+            <div style={headerLogOut}><Link  to="/startDemo"> <h4> Log out</h4></Link></div>
           </div>
           <div style={headerBottom}>
             <div style = {headerDate}><h3>{weekDay}, {day} {monthString} {year}</h3></div>

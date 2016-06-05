@@ -26,6 +26,7 @@ const ID_PATIENT_CALL = "?userIds=574502bbffbe460300638e25";
 const ID_USER = "574502bbffbe460300638e25";
 const API_KEY  = '';
 
+export const GENERATE_DEMO = 'GENERATE_DEMO';
 export const SUBMIT_TASKS = 'SUBMIT_TASKS';
 export const FETCH_SHIFT = 'FETCH_SHIFT';
 export const FETCH_PROGRESS_NOTES = 'FETCH_PROGRESS_NOTES';
@@ -98,6 +99,24 @@ export function createSymptomInstance(props) {
   }
 }
 
+export function generateDemo() {
+  const request = axios.post(`${ROOT_URL}startDemo`);
+  return {
+    type: GENERATE_DEMO,
+    payload: request  };
+  }
+
+  export function setFamily(userId) {
+    return {
+      type: 'FAMILY',
+      payload: userId  };
+    }
+
+    export function setCaretaker(userId) {
+      return {
+        type: 'CARETAKER',
+        payload: userId  };
+      }
 
 
 export function fetchUser(id) {
@@ -166,13 +185,13 @@ export function resetPatient() {
 // =================================================================
 export function submitTasks(task) {
   console.log('inside submitTasks');
-  
+
   var data = {
     "status": task.status
   };
   var url = `${ROOT_URL}/tasks/${task._id}`;
   const request = axios.put(`${ROOT_URL}/tasks/${task._id}`, data);
-  
+
   return {
     type: SUBMIT_TASKS,
     payload: request

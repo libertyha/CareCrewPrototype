@@ -16,6 +16,9 @@ import ShiftRequestCountReducer from './reducer_incr_decr_shift_requests';
 import AddProgressNote from './reducer_add_progress_note';
 import BodyMeasuresReducer from './reducer_body_measures';
 import ActivePage from './reducer_active_page';
+import DemoObject from './reducer_demo_object';
+import Family from './reducer_demo_family';
+import Caretaker from './reducer_demo_caretaker';
 
 const rootReducer = combineReducers({
   //any key set below (key: ReducerName) ends up as a key on our global state
@@ -35,7 +38,10 @@ const rootReducer = combineReducers({
   shiftrequest: ShiftRequestCountReducer,
   addprogressnote: AddProgressNote,
   bodyMeasures: BodyMeasuresReducer,
-  activePage: ActivePage
+  activePage: ActivePage,
+  demoObject: DemoObject,
+  family: Family,
+  caretaker: Caretaker
 });
 
 export default rootReducer;

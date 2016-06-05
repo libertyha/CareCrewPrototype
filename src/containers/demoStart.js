@@ -33,15 +33,19 @@ export default class DemoStart extends Component {
   };
 
   render() {
+    if(!this.props.demoObject.caretakerId){
+      return <div> Users are loading...</div>
+    }
+    else{
     return (
       <div className="Well" style={wellStyles}>
     <ul>
                <Link  to="/myClients">
-    <Button onClick={() => this.onUserSelect('5751f5c16dfed61a00f0e015')} bsStyle ="primary" bsSize="large" block>I am Gloria (caretaker)</Button>
+    <Button onClick={() => this.onUserSelect(this.props.demoObject.caretakerId)} bsStyle ="primary" bsSize="large" block>I am Gloria (caretaker)</Button>
 </Link>
 <br></br>
  <Link  to="/myFamily">
-    <Button onClick={() => this.onUserSelect('5751f5486dfed61a00f0e014')} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
+    <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
 </Link>
 
     </ul>
@@ -49,12 +53,14 @@ export default class DemoStart extends Component {
 
     );
     }
+  }
 }
 function mapStateToProps(state){
   return{
       users: state.users.all,
       user: state.users.user,
-      patients: state.patients.all
+      patients: state.patients.all,
+      demoObject: state.demoObject.all
     };
 }
 function mapDispatchToProps(dispatch) {
