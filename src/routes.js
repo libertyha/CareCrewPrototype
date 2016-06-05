@@ -6,7 +6,7 @@ import UserPatients from './containers/user-patients';
 import BodyInput from './components/bodyInput';
 import caretakerOptions from './components/caretakerOptions';
 import DemoStart from './containers/demoStart';
-import ShiftTaskListAndNotifications from './components/shift_tasklist_and_notifications';
+import CareCheckList from './components/shift_tasklist_and_notifications';
 
 export default (
   <Route path="/" component={App}>
@@ -16,6 +16,6 @@ export default (
     <Route path="myFamily" component={UserPatients} />
     <Route path="demoStart" component={DemoStart} />
     <Route path="caretakerFeatures" component={caretakerOptions} />
-    <Route path='/shift' component={ShiftTaskListAndNotifications} />
+    <Route path='careCheckList' component={CareCheckList} />
   </Route>
 );

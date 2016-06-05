@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { submitTasks } from '../actions/index';
-import { fetchShiftData } from '../actions/index';
+import { fetchTasks } from '../actions/index';
 import { fetchNotifications } from '../actions/index';
 import { fetchProgressNotes } from '../actions/index';
 import { incrDecrShiftSubmitRequestCount } from '../actions/index';
@@ -50,7 +50,7 @@ class ShiftTaskListAndNotifications extends Component {
   //   whenever this component is about to render for the first time
   componentWillMount() {
     console.log("inside componentWillMount()");
-    this.props.fetchShiftData();
+    this.props.fetchTasks();
     this.props.fetchNotifications();
     this.props.fetchProgressNotes();
   }
@@ -548,11 +548,11 @@ ShiftTaskListAndNotifications.propTypes = {
 // }
 
 
-// Whenever fetchShiftData is called, the result should be passed
+// Whenever fetchTasks is called, the result should be passed
 // to all of the reducers
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addValue: addArrayValue,
-                              fetchShiftData: fetchShiftData,
+                              fetchTasks: fetchTasks,
                               fetchNotifications: fetchNotifications,
                               fetchProgressNotes: fetchProgressNotes,
                               submitTasks: submitTasks,

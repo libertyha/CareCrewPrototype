@@ -31,7 +31,7 @@ class CaretakerOptions extends Component {
   render() {
     return (
       <div className="blockButtons" style={blockButton}>
-      <Link  to="/shift">  <Button onClick={() => this.goToList()} bsStyle ="primary" bsSize="large" block>  <img style={buttonImg} src={require('../img/7.png')}/><div style={buttonText}><h2>  Care List</h2></div></Button></Link>
+      <Link  to="/careCheckList">  <Button onClick={() => this.goToList()} bsStyle ="primary" bsSize="large" block>  <img style={buttonImg} src={require('../img/7.png')}/><div style={buttonText}><h2>  Care List</h2></div></Button></Link>
 <br></br>
       <Link  to="/SymptomTracker"><Button onClick={() => this.goToSymptomTracker()} bsStyle ="primary" bsSize="large" block> <img style={buttonImg} src={require('../img/6.png')}/><div style={buttonText}><h2> Symptom Tracker </h2></div></Button></Link>
       </div> //<img src={'http://www.clker.com/cliparts/P/Q/t/5/E/r/white-stick-figure.svg'} alt="human figure">

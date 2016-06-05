@@ -201,10 +201,10 @@ export function submitTasks(task) {
 
 // =================================================================
 //
-//    fetchShiftData
+//    fetchTasks
 //
 // =================================================================
-export function fetchShiftData(props) {
+export function fetchTasks(props) {
   // const request = axios.post(url), props);
   // const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
 
@@ -278,7 +278,7 @@ export function fetchShiftData(props) {
 //   {id: '1', description: 'Rose did not like the soup at lunch', date_created: 'May 23, 2016 3:00pm', owner: 'Linda'}
 // ];
 
-  console.log("inside fetchShiftData");
+  console.log("inside fetchTasks");
 
   return {
     type: FETCH_SHIFT,
