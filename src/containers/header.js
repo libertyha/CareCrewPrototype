@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux';
 
-const headerContainer = {'height': '150px', 'backgroundColor': '#FFFFFF',}
-const headerTop = {'position':'relative', 'width':'100%', 'height': '100px'}
-const headerLogo = {'float': 'left','display': 'inline-block', 'height': '100%'}
-const headerUserName = {'display': 'inline-block', 'float': 'left','position': 'relative', 'top': '30%'}
-const headerLogOut = {'float': 'right','display': 'inline-block','position': 'relative', 'top': '30%'}
-const headerBottom = {'width': '100%', 'clear': 'left'}
-const headerDate = {'float': 'left'}
-const headerPatientName = {'float': 'right'}
-
+const headerContainer = {'height': '150px', 'backgroundColor': '#FFFFFF'};
+const headerTop = {'position':'relative', 'width':'100%', 'height': '100px'};
+const headerLogo = {'float': 'left','display': 'inline-block', 'height': '100%'};
+const headerUserName = {'display': 'inline-block', 'float': 'left','position': 'relative', 'top': '30%'};
+const headerLogOut = {'float': 'right','display': 'inline-block','position': 'relative', 'top': '30%'};
+const headerBottom = {'width': '100%', 'clear': 'left'};
+const headerDate = {'float': 'left'};
+const headerPatientName = {'float': 'right'};
+;
 var d = new Date();
 var wIndex = d.getUTCDay();
 var day = d.getUTCDate();
