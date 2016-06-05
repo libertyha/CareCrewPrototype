@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux';
 
-const headerContainer = {'height': '150px', 'background-color': '#FFFFFF',}
+const headerContainer = {'height': '150px', 'backgroundColor': '#FFFFFF',}
 const headerTop = {'position':'relative', 'width':'100%', 'height': '100px'}
 const headerLogo = {'float': 'left','display': 'inline-block', 'height': '100%'}
 const headerUserName = {'display': 'inline-block', 'float': 'left','position': 'relative', 'top': '30%'}
