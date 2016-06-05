@@ -157,3 +157,7 @@ body {
     width: 50%;
     /* line-height: 100px; */
 }
+
+.white-link {
+    color: #ffffff;
+}
