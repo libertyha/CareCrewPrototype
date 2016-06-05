@@ -284,6 +284,9 @@ body {
   line-height: 1.428571429;
   color: #72727f;
   background-color: #f1f1f2;
+  position: absolute;
+  margin-left: 50%;
+  height: 100%;
 }
 input,
 button,
@@ -766,7 +769,8 @@ pre code {
 }
 .container {
   margin-right: auto;
-  margin-left: auto;
+  margin-left: -50%;
+  height: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -2203,7 +2207,7 @@ fieldset[disabled] .btn {
 .btn-default {
   color: #72727f;
   background-color: #f4f4f4;
-  border-color: #72727f;
+  border-color: #6ec6bb;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -2213,7 +2217,7 @@ fieldset[disabled] .btn {
 .open > .dropdown-toggle.btn-default {
   color: #72727f;
   background-color: #dbdbdb;
-  border-color: #72727f;
+  border-color: #46b1a4;
 }
 .btn-default:active,
 .btn-default.active,
@@ -5083,8 +5087,8 @@ a.thumbnail.active {
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: #7E81B3;
-  border: 1px solid #7E81B3;
+  background-color: #99d7d0;
+  border: 1px solid #99d7d0;
 }
 .list-group-item:first-child {
   border-top-right-radius: 4px;
@@ -5247,29 +5251,18 @@ a.list-group-item-danger.active:focus {
 /* CareCrew Style */
 
 .task-div{
-	background-color: #CBCDE1;
+	background-color: #84C0C3;
 	box-shadow: 1px 1px 1px #72727f;
 }
 ul.progress-notes-list li{
 	list-style-type: none;
-	background-color: #CBCDE1;
+	background-color: #84C0C3;
 	box-shadow: 1px 1px 1px #72727f;
 	padding: 10px;
 }
 div.container{
 	background-color:#fff;
 }
-
-button.badge{
-	border: 0px;
-}
-.task-button-right{
-	position: absolute;
-	right: 10px;
-	top: 50%;
-	transform: translateY(-25%)
-}
-
 .panel {
   margin-bottom: 20px;
   background-color: #ffffff;
