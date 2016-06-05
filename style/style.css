@@ -9,7 +9,7 @@ body {
 }
 
 .manBody{
-    fill:#80CDC4;
+    fill:#F1F1F2;
    }
    #manBody{
      stroke:#5e9790;
@@ -17,59 +17,59 @@ body {
      stroke-miterlimit:10;
    }
 #manBody:hover{
-    fill:#F1F1F2;
+    fill:#b5f0eb;
    }
 
 .body-part-selected{
-  fill:#FFF;
+  fill:#80CDC4;
   stroke:#5e9790;
   stroke-width:2;
 }
 
 .manRLeg{
-  fill:#80CDC4;
+  fill:#F1F1F2;
   stroke:#5e9790;
   stroke-width:2;
 }
 #manRLeg:hover{
-  fill:#F1F1F2;
+  fill:#b5f0eb;
 }
 
 .manLLeg{
-  fill:#80CDC4;
+  fill:#F1F1F2;
   stroke:#5e9790;
   stroke-width:2;
 }
 #manLLeg:hover{
-  fill:#F1F1F2;
+  fill:#b5f0eb;
 }
 
 .manRArm{
-  fill:#80CDC4;
+  fill:#F1F1F2;
   stroke:#5e9790;
   stroke-width:2;
 }
 #manRArm:hover{
-  fill:#F1F1F2;
+  fill:#b5f0eb;
 }
 
 .manLArm{
-  fill:#80CDC4;
+  fill:#F1F1F2;
   stroke:#5e9790;
   stroke-width:2;
 }
 #manLArm:hover{
-  fill:#F1F1F2;
+  fill:#b5f0eb;
 }
 
 
 .manHead{
-  fill:#80CDC4;
+  fill:#F1F1F2;
   stroke:#5e9790;
   stroke-width:2;
 }
 #manHead:hover{
-  fill:#F1F1F2;
+  fill:#b5f0eb;
 }
 
 .body-class {

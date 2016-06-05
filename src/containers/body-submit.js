@@ -27,8 +27,8 @@ onClickSubmit(){
 };
 insertTrackData(){
   var body = {
-          bodyPart: this.props.bodyPart.id,
-          measurementUnit: this.props.activePain.name,
+          bodyPart: this.props.bodyPart.label,
+          measurementUnit: this.props.activePain.label,
           measurement: this.props.activeSeverity.name,
           patientId: this.props.patient[0]._id,
           userIds: this.props.user[0]._id
@@ -42,10 +42,10 @@ insertTrackData(){
     .send(JSON.stringify(body,null,"   "))
           .end(function(err, res){
               if (err || !res.ok) {
-              alert('Oh no! error');
+              alert('Error, submission was not successful');
                   alert(JSON.stringify(body, null, "   "));
               } else {
-                  alert('yay got ' + JSON.stringify(res.body));
+                  alert('Successful submission ' + JSON.stringify(res.body));
               }
         })
 }
