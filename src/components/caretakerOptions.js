@@ -9,6 +9,9 @@ import { Link } from 'react-router';
 import {bindActionCreators} from 'redux';
 import { setActivePage } from '../actions/index';
 import {connect} from 'react-redux';
+import { fetchTasks } from '../actions/index';
+import { fetchNotifications } from '../actions/index';
+import { fetchProgressNotes } from '../actions/index';
 
 const buttonImg = {'float': 'left', 'height': '100px'}
 const buttonText = {'marginTop': '30px'}
@@ -24,7 +27,10 @@ class CaretakerOptions extends Component {
 
   };
   goToList(){
-    console.log('this will go to the daily list')
+    console.log('this will go to the daily list and fill in props')
+    this.props.fetchTasks(this.props.patient[0]._id);
+    this.props.fetchNotifications(this.props.patient[0]._id);
+    this.props.fetchProgressNotes(this.props.patient[0]._id);
     //this.props.fetchBodyMeasures(this.props.user[0]._id)
 
   };
@@ -39,7 +45,13 @@ class CaretakerOptions extends Component {
     );
   }
 }
-function mapDispatchToProps(dispatch) {
-return bindActionCreators({setActivePage: setActivePage}, dispatch);
+function mapStateToProps(state){
+  return{
+    patient: state.patients.patient,
+    };
 }
-export default connect(null, mapDispatchToProps)(CaretakerOptions);
+
+function mapDispatchToProps(dispatch) {
+return bindActionCreators({setActivePage: setActivePage, fetchTasks: fetchTasks, fetchNotifications: fetchNotifications, fetchProgressNotes: fetchProgressNotes}, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CaretakerOptions);

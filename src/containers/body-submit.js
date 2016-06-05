@@ -68,7 +68,7 @@ insertTrackData(){
     }
     return <div>  <Button bsStyle="primary" bsSize="large" onClick={() => this.openModal()}>Submit</Button>
 
-        <Modal show={this.state.showModal} onHide={() => this.closeModal()} backdrop={false}>
+        <Modal show={this.state.showModal} onHide={() => this.closeModal()}>
           <Modal.Header >
           <Modal.Title>Please confirm that you wish to submit the following:</Modal.Title>
           </Modal.Header>

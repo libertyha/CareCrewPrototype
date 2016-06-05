@@ -9,8 +9,8 @@ import { FETCH_NOTIFICATIONS } from '../actions/index';
 
   request["tasks"] =
   [
-    {id: '0', description: 'description of task 0', date_scheduled: 'May 23, 2016 11:00am', owner: 'Linda', completed: false},
-    {id: '1', description: 'description of task 1', date_scheduled: 'May 23, 2016 3:00pm', owner: 'Linda', completed: false}
+    {id: '0', description: 'description of task 0', date_scheduled: 'May 23, 2016 11:00am', owner: 'Bob', completed: false},
+    {id: '1', description: 'description of task 1', date_scheduled: 'May 23, 2016 3:00pm', owner: 'Jet', completed: false}
   ];
 
   // request["notifications"] =
@@ -34,7 +34,7 @@ export default function(state = INITIAL_STATE, action) {
           { id: notification._id,
             description: notification.message,
             date_created: notification.createdDate,
-            owner: 'Linda'
+            owner: 'Janet'
           }
         );
     });

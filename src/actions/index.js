@@ -35,7 +35,7 @@ export const INCR_DECR_SHIFT_REQUESTS = 'INCR_DECR_SHIFT_REQUESTS';
 export const ADD_PROGRESS_NOTE = 'ADD_PROGRESS_NOTE';
 
 // const ROOT_URL = 'http://carecrewhq.herokuapp.com/careCrew';
-const PATIENT = 'patientId=574248c15417d00300d15d84';
+const PATIENT = '574248c15417d00300d15d84';
 
 
 export function setActivePage(activePage){
@@ -189,8 +189,8 @@ export function submitTasks(task) {
     "status": task.status
   };
   var url = `${ROOT_URL}/tasks/${task._id}`;
-  const request = axios.put(`${ROOT_URL}/tasks/${task._id}`, data);
-  
+  const request = axios.put(`${ROOT_URL}tasks/${task._id}`, data);
+
   return {
     type: SUBMIT_TASKS,
     payload: request
@@ -200,8 +200,8 @@ export function submitTasks(task) {
 // =================================================================
 // == fetchTasks
 // =================================================================
-export function fetchTasks(props) {
-  const request = axios.get(`${ROOT_URL}/tasks${API_KEY}?${PATIENT}`);
+export function fetchTasks(patientId) {
+  const request = axios.get(`${ROOT_URL}tasks${API_KEY}?patientId=${patientId}`);
 
   return {
     type: FETCH_TASKS,
@@ -212,8 +212,8 @@ export function fetchTasks(props) {
 // =================================================================
 // == fetchProgressNotes
 // =================================================================
-export function fetchProgressNotes(props) {
-  const request = axios.get(`${ROOT_URL}/progressNotes`);
+export function fetchProgressNotes(patientId) {
+  const request = axios.get(`${ROOT_URL}progressNotes?patientId=${patientId}`);
 
   return {
     type: FETCH_PROGRESS_NOTES,
@@ -224,9 +224,8 @@ export function fetchProgressNotes(props) {
 // =================================================================
 // == fetchNotifications
 // =================================================================
-export function fetchNotifications(props) {
-  const url = 'http://carecrewhq.herokuapp.com/careCrew/notifications?patientId=574248c15417d00300d15d84';
-  const request = axios.get(url);
+export function fetchNotifications(patientId) {
+  const request = axios.get(`${ROOT_URL}notifications?patientId=${patientId}`);
 
   console.log("inside fetchNotifications");
   return {

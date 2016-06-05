@@ -14,7 +14,7 @@ export default class UserPatients extends Component {
   }
   componentWillMount(){
       this.props.resetPatient();
-      console.log(this.props.routes[1].path);
+      //change page name based on user type
       if(this.props.routes[1].path == 'myClients'){
         this.props.setActivePage("My care clients");
       }
@@ -24,12 +24,9 @@ export default class UserPatients extends Component {
 
   }
   goToPatient(thisID){
-     console.log('you clicked a patient');
-     console.log(thisID);
      this.props.fetchPatient(thisID);
    }
   renderPatients(goToRoute) {
-    console.log(this.props.patients[0].firstName);
       return this.props.patients.map((patient) => {
           return (
            <Link  to={goToRoute}><li className="list-group-item" onClick={() => this.goToPatient(patient._id)}  key={patient._id}>

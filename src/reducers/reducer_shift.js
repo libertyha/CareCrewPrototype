@@ -76,8 +76,8 @@ import { FETCH_TASKS } from '../actions/index';
 
   request["notifications"] =
   [
-    {id: '0', description: 'Rose fell in the kitchen', date_created: 'May 23, 2016 11:00am', owner: 'Linda'},
-    {id: '1', description: 'Rose did not like the soup at lunch', date_created: 'May 23, 2016 3:00pm', owner: 'Linda'}
+    {id: '0', description: 'Rose fell in the kitchen', date_created: 'May 23, 2016 11:00am', owner: 'John'},
+    {id: '1', description: 'Rose did not like the soup at lunch', date_created: 'May 23, 2016 3:00pm', owner: 'Ringo'}
   ];
 
 export default function(state = INITIAL_STATE, action) {
@@ -99,7 +99,7 @@ export default function(state = INITIAL_STATE, action) {
           { id: task._id,
             description: task.description,
             date_created: 'May 23, 2016',
-            owner: 'Linda',
+            owner: 'Paul',
             completed: (task.status === 'completed') ? true : false
           }
         );

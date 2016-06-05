@@ -50,9 +50,6 @@ class ShiftTaskListAndNotifications extends Component {
   //   whenever this component is about to render for the first time
   componentWillMount() {
     console.log("inside componentWillMount()");
-    this.props.fetchTasks();
-    this.props.fetchNotifications();
-    this.props.fetchProgressNotes();
   }
 
   // ===============================================================
@@ -252,6 +249,8 @@ class ShiftTaskListAndNotifications extends Component {
   // ===============================================================
   renderTasks(tasks, onTaskButtonClick) {
     console.log("inside renderTask()");
+      console.log(this.props.user[0].firstName);
+        console.log(this.props.user);
     if (tasks.length === 0){
       return (
         <div>
@@ -285,7 +284,7 @@ class ShiftTaskListAndNotifications extends Component {
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
-
+    var userName = this.props.user[0].firstName;
     var d1s = monthNames[monthIndex] + ' ' + day + ' ' + year;
 
     var self = this;
@@ -295,24 +294,13 @@ class ShiftTaskListAndNotifications extends Component {
            <div key={index} className="list-group-item my-list-group-item">
             <div className="task-div">
               <label>
-                  <PureInput type="checkbox"  field={task.completed} /> {task.description.value} {(task.completed.value === true) ? '  -  ' + task.owner.value + '  -   ' + d1s : ''}
+                  <PureInput type="checkbox"  field={task.completed} /> {task.description.value} {(task.completed.value === true) ? '  -  ' + userName + '  -   ' + d1s : ''}
               </label> <span className="task-button-right"><Button className="badge task-button-right" onClick={onTaskButtonClick}> <i/>details...</Button></span>
 
             </div>
           </div>
       );
     });
-
-    // temp.push(
-    //       <div key={999999} className="list-group-item">
-    //         <div className="task-div">
-    //           <label>
-    //               <PureInput type="checkbox"  field={tasks[0].completed} /> {'Click button to go to the Symptom Tracker'}
-    //           </label> <span className="task-button-right"><button className="btn-smx task-button-right"> <i/>details...</button></span>
-    //
-    //         </div>
-    //       </div>
-    // );
 
     return temp;
   }
@@ -546,20 +534,25 @@ function mapStateToProps(state) {
   var stateToProps = {};
 
   if (state.notifications.shift.notifications) {
-    stateToProps.notifications = state.notifications.shift.notifications;
-  }
+  stateToProps.notifications = state.notifications.shift.notifications;
+  stateToProps.user = state.users.user;
+}
 
-  if (state.shift.shift) {
-    stateToProps.books = state.shift.shift;
-  }
+if (state.shift.shift) {
+  stateToProps.books = state.shift.shift;
+  stateToProps.user = state.users.user;
+}
 
-  if (state.progressnotes.progress_notes ) {
-    stateToProps.progress_notes = state.progressnotes.progress_notes;
-  }
+if (state.progressnotes.progress_notes ) {
+  stateToProps.progress_notes = state.progressnotes.progress_notes;
+  stateToProps.user = state.users.user;
+}
 
-  if (state.shiftrequest.shiftSubmitRequestCount >= 0) {
-    stateToProps.shiftSubmitRequestCount = state.shiftrequest.shiftSubmitRequestCount;
-  }
+if (state.shiftrequest.shiftSubmitRequestCount >= 0) {
+  stateToProps.shiftSubmitRequestCount = state.shiftrequest.shiftSubmitRequestCount;
+  stateToProps.user = state.users.user;
+}
+
 
   return stateToProps;
 
