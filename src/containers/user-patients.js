@@ -33,7 +33,7 @@ export default class UserPatients extends Component {
       return this.props.patients.map((patient) => {
           return (
            <Link  to={goToRoute}><li className="list-group-item" onClick={() => this.goToPatient(patient._id)}  key={patient._id}>
-                <span className="pull-xi-right">{patient.firstName}</span>
+                <span className="pull-xi-right">{patient.firstName} </span>
                 <strong>{patient.lastName}</strong>
             </li></Link>);});}
 
