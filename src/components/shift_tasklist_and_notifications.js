@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
+import { Button, ButtonGroup, ButtonToolbar, Modal } from 'react-bootstrap';
 import { setActivePage } from '../actions/index';
 
 import { reduxForm, addArrayValue } from 'redux-form';
@@ -46,7 +46,13 @@ export const fields = [
 class ShiftTaskListAndNotifications extends Component {
   constructor(props) {
     super(props);
-  this.props.setActivePage("Care Checklist");
+    this.state = {
+      showModal: false,
+      clickedTaskDescription: null,
+      clickedTaskUpdatedDate: null
+    }
+
+    this.props.setActivePage("Care Checklist");
     // this.renderTasks = this.renderTasks.bind(this);
 
   }
@@ -93,6 +99,22 @@ class ShiftTaskListAndNotifications extends Component {
   }
 
   // ===============================================================
+  //   openModal
+  // ===============================================================
+  openModal(task) {
+   this.setState({showModal: true });
+   this.setState({clickedTaskDescription: task.description})
+   this.setState({clickedTaskUpdatedDate: task.updatedDate})
+  };
+
+  // ===============================================================
+  //   closeModal
+  // ===============================================================
+  closeModal() {
+    this.setState({ showModal: false });
+  };
+
+  // ===============================================================
   //   onTaskButtonClick
   // ===============================================================
   onTaskButtonClick(event) {
@@ -103,12 +125,13 @@ class ShiftTaskListAndNotifications extends Component {
      // use long description in the alert
      var index = parseInt(event.currentTarget.id, 10);
 
-     var task =  this.props.fields.tasks[index];
+     var task =  {
+      description: this.props.fields.tasks[index].description.value,
+      updatedDate: this.props.fields.tasks[index].updatedDate.value
+     }
 
-     var msg = task.description.value + ' Posted: ' + task.updatedDate.value;
-
-     // alert("Task details coming soon... ");
-     alert(msg);
+     // open Modal window
+     this.openModal(task);
 
   }
 
@@ -478,73 +501,91 @@ class ShiftTaskListAndNotifications extends Component {
    }
 
     return (
-      <form className="form-class" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <p><Link to="/options">
-              <Button type="button" className="btn">Back to Options</Button>
-          </Link></p>
-        {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [], this.onTaskButtonClick)}
+      <div>
+        <form className="form-class" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <p><Link to="/options">
+                <Button type="button" className="btn">Back to Options</Button>
+            </Link></p>
+          {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [])}
 
-        <div className="vital-signs-div">
-          <div className="vital-signs-label">Vital Signs and other measurements</div>
-            <ButtonToolbar>
-              <ButtonGroup>
-                <Button onClick={this.onVitalSignsClick.bind(this)} >
-                  heart rate
-                </Button>
-                <Button onClick={this.onVitalSignsClick.bind(this)} >
-                  blood pressure
-                </Button>
-                <Button onClick={this.onVitalSignsClick.bind(this)} >
-                  glucose
-                </Button>
-                <Button onClick={this.onVitalSignsClick.bind(this)} >
-                  weight
-                </Button>
-                <Button onClick={this.onVitalSignsClick.bind(this)} >
-                  other vital signs
-                </Button>
-              </ButtonGroup>
-            </ButtonToolbar>
-        </div>
-
-        <h3>Progress Notes section</h3>
-          <ul className="progress-notes-list">
-             {this.renderProgressNotes(this.props.progress_notes)}
-          </ul>
-           <div className="progress_note_outer_div">
-
-             <div className="progress_note_inner_div">
-
-                 <ButtonToolbar>
-                  <ButtonGroup>
-                    <Button onClick={this.onAddPhotoClick.bind(this)}>Add Photo</Button>
-                    <Button onClick={this.onAddVideoClick.bind(this)}>Add Video</Button>
-                  </ButtonGroup>
-                </ButtonToolbar>
-
-                <PureTextarea className="add-progress-note-body" defaultValue="Enter progress note here." field={this.props.fields.progress_note.description} />
-
-                 <ButtonToolbar>
-                  <ButtonGroup>
-                    <Button onClick={this.onAddProgressNote.bind(this)}>+</Button>
-                  </ButtonGroup>
-                </ButtonToolbar>
-
-            </div>
+          <div className="vital-signs-div">
+            <div className="vital-signs-label">Vital Signs and other measurements</div>
+              <ButtonToolbar>
+                <ButtonGroup>
+                  <Button onClick={this.onVitalSignsClick.bind(this)} >
+                    heart rate
+                  </Button>
+                  <Button onClick={this.onVitalSignsClick.bind(this)} >
+                    blood pressure
+                  </Button>
+                  <Button onClick={this.onVitalSignsClick.bind(this)} >
+                    glucose
+                  </Button>
+                  <Button onClick={this.onVitalSignsClick.bind(this)} >
+                    weight
+                  </Button>
+                  <Button onClick={this.onVitalSignsClick.bind(this)} >
+                    other vital signs
+                  </Button>
+                </ButtonGroup>
+              </ButtonToolbar>
           </div>
 
+          <h3>Progress Notes section</h3>
+            <ul className="progress-notes-list">
+               {this.renderProgressNotes(this.props.progress_notes)}
+            </ul>
+             <div className="progress_note_outer_div">
+
+               <div className="progress_note_inner_div">
+
+                   <ButtonToolbar>
+                    <ButtonGroup>
+                      <Button onClick={this.onAddPhotoClick.bind(this)}>Add Photo</Button>
+                      <Button onClick={this.onAddVideoClick.bind(this)}>Add Video</Button>
+                    </ButtonGroup>
+                  </ButtonToolbar>
+
+                  <PureTextarea className="add-progress-note-body" defaultValue="Enter progress note here." field={this.props.fields.progress_note.description} />
+
+                   <ButtonToolbar>
+                    <ButtonGroup>
+                      <Button onClick={this.onAddProgressNote.bind(this)}>+</Button>
+                    </ButtonGroup>
+                  </ButtonToolbar>
+
+              </div>
+            </div>
 
 
-        { /* this.renderNotifications(this.props.fields.notifications ? this.props.fields.notifications : [])  */}
 
-        <button type="submit" className="btn btn-primary" disabled={ this.props.shiftSubmitRequestCount }>
-            {this.props.shiftSubmitRequestCount ? <i/> : ''} Submit
-        </button>
-        <button type="button" onClick={resetForm} className="btn">
-            Clear Values
-        </button>
-        { this.props.shiftSubmitRequestCount ? null: <div>Tasks updated successfully</div> }
-      </form>
+          { /* this.renderNotifications(this.props.fields.notifications ? this.props.fields.notifications : [])  */}
+
+          <button type="submit" className="btn btn-primary" disabled={ this.props.shiftSubmitRequestCount }>
+              {this.props.shiftSubmitRequestCount ? <i/> : ''} Submit
+          </button>
+          <button type="button" onClick={resetForm} className="btn">
+              Clear Values
+          </button>
+          { this.props.shiftSubmitRequestCount ? null: <div>Tasks updated successfully</div> }
+        </form>
+
+
+        <Modal show={this.state.showModal} onHide={() => this.closeModal()}>
+          <Modal.Header >
+          <Modal.Title>Task Detail:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <hr />
+            <p>{this.state.clickedTaskDescription}</p>
+            <p>Posted: {this.state.clickedTaskUpdatedDate}</p>
+          </Modal.Body>
+          <Modal.Footer>
+              <Button onClick={() => this.closeModal()}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+
     );
   }
 }
