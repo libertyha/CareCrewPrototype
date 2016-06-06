@@ -16,6 +16,7 @@ export default class BodyReport extends Component {
     }
     componentWillMount() {
         this.props.setActivePage("Run report");
+        this.setState({isBodyMeasuresCalled: false});
     };
     getBodyMeasures(){
       this.props.fetchBodyMeasures(this.props.patient[0]._id)
@@ -32,9 +33,9 @@ export default class BodyReport extends Component {
       });
     }
     render() {
-      if (!this.props.bodyMeasures[0] && !this.state.isBodyMeasuresCalled) {
+      if (!this.props.bodyMeasures[0] || !this.state.isBodyMeasuresCalled) {
         return <div>
-        {console.log(this.state.isBodyMeasuresCalled)}
+        {console.log('this.state.isBodyMeasuresCalled: ' + this.state.isBodyMeasuresCalled)}
         <Button onClick={() => this.getBodyMeasures()}> Generate Report </Button>
         </div>
       }

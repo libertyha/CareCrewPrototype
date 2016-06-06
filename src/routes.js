@@ -10,7 +10,8 @@ import CareCheckList from './components/shift_tasklist_and_notifications';
 import CareCentral from './containers/care-central';
 
 export default (
-  <Route path="/" component={App}>
+  <Route component={App}>
+    <Route path="/" component={CareCentral} />
     <Route path="CareCentral" component={CareCentral} />
     <Route path="SymptomTracker" component={BodyInput} />
     <Route path="SymptomTrackerReport" component={BodyReport} />

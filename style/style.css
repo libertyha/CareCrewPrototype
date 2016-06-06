@@ -161,3 +161,9 @@ body {
 .white-link {
     color: #ffffff;
 }
+
+.outerBody {
+    position: absolute;
+    height: 100%;
+    margin-left: 50%;
+}
