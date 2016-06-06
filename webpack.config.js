@@ -9,14 +9,10 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'react']
-      }
+      loader: 'babel'
     },
-   { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }]
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
