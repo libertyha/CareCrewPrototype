@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { submitTasks } from '../actions/index';
+import { submitProgressNote } from '../actions/index';
+
 import { fetchTasks } from '../actions/index';
 import { fetchNotifications } from '../actions/index';
 import { fetchProgressNotes } from '../actions/index';
@@ -26,9 +28,10 @@ export const fields = [
   'tasks[].owner',
   'tasks[].completed',
   'progress_note.id',
-  'progress_note.note_body',
+  'progress_note.description',
   'progress_note.updateDate',
-  'progress_note.owner',
+  'progress_note.creatorId',
+  'progress_note.patientId',
   'progress_note.photo',
   'progress_note.video',
   'notifications[].id',
@@ -50,6 +53,9 @@ class ShiftTaskListAndNotifications extends Component {
   //   whenever this component is about to render for the first time
   componentWillMount() {
     console.log("inside componentWillMount()");
+    //this.props.fetchTasks(this.props.patientId);
+    //this.props.fetchNotifications();
+    //this.props.fetchProgressNotes(this.props.patientId);
   }
 
   // ===============================================================
@@ -59,18 +65,25 @@ class ShiftTaskListAndNotifications extends Component {
 
     console.log("inside onAddProgressNote()");
     event.preventDefault()  // prevent form submission
-    var text = this.props.fields.progress_note.note_body.value;
+    var text = this.props.fields.progress_note.description.value;
     var date = new Date();
 
     var progressNote =
       {
          id: null,
-         note_body: text,
+         description: text,
          updatedDate: date,
-         owner: 'Phyliss',
+         creatorId: this.props.user[0]._id,
+         patientId: this.props.patient[0]._id,
          photo: null,
-         video: null
+         video: null,
+         dirty: true
       };
+
+    console.log('this.props.user');
+    console.log(this.props.user);
+    console.log('this.props.patient');
+    console.log(this.props.patient);
 
     this.props.addProgressNoteToGlobalState(progressNote);
     this.props.clearAddProgressNotesField();
@@ -148,10 +161,36 @@ class ShiftTaskListAndNotifications extends Component {
             // ... display update complete message
           });
 
-
       }
     });
-    // this.props.submitNotications();
+
+    // iterate thru progress notes list
+    // ... send request to server
+    // ... for each progress note that has "dirty" == true
+    this.props.progress_notes.forEach(function(progress_note) {
+
+      if (progress_note.dirty) {
+
+        console.log('self.props.shiftSubmitRequestCount');
+        console.log(self.props.shiftSubmitRequestCount);
+
+        self.props.incrDecrShiftSubmitRequestCount(1);
+
+        self.props.submitProgressNote(progress_note)
+        .then((data) => {
+            console.log('submitProgressNotes() has finished');
+            console.log('data');
+            console.log(data);
+            self.props.incrDecrShiftSubmitRequestCount(-1);
+
+            // if all tasks are updated, take focus off Submit button somehow
+            // ... display update complete message
+          });
+        progress_note.dirty = false;
+      }
+
+    });
+
    }
 
   // ===============================================================
@@ -249,8 +288,8 @@ class ShiftTaskListAndNotifications extends Component {
   // ===============================================================
   renderTasks(tasks, onTaskButtonClick) {
     console.log("inside renderTask()");
-      console.log(this.props.user[0].firstName);
-        console.log(this.props.user);
+    //   console.log(this.props.user[0].firstName);
+    //     console.log(this.props.user);
     if (tasks.length === 0){
       return (
         <div>
@@ -321,9 +360,9 @@ class ShiftTaskListAndNotifications extends Component {
     }
 
     // {id: '1',
-    //  note_body: 'Previous progress note from a previous shift. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.',
+    //  description: 'Previous progress note from a previous shift. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.',
     //  updatedDate: 'May 24, 2016 11:00am',
-    //  owner: 'Phyliss',
+    //  creatorId: 'Phyliss',
     //  photo: null,
     //  video: null
     // }
@@ -333,7 +372,7 @@ class ShiftTaskListAndNotifications extends Component {
       return (
            <div key={index} className="list-group-item">
 
-              <li> {progress_note.note_body}
+              <li> {progress_note.description}
               </li>
 
           </div>
@@ -465,7 +504,7 @@ class ShiftTaskListAndNotifications extends Component {
                   </ButtonGroup>
                 </ButtonToolbar>
 
-                <PureTextarea className="add-progress-note-body" defaultValue="Enter progress note here." field={this.props.fields.progress_note.note_body} />
+                <PureTextarea className="add-progress-note-body" defaultValue="Enter progress note here." field={this.props.fields.progress_note.description} />
 
                  <ButtonToolbar>
                   <ButtonGroup>
@@ -513,6 +552,7 @@ function mapDispatchToProps(dispatch) {
                               fetchNotifications: fetchNotifications,
                               fetchProgressNotes: fetchProgressNotes,
                               submitTasks: submitTasks,
+                              submitProgressNote: submitProgressNote,
                               incrDecrShiftSubmitRequestCount: incrDecrShiftSubmitRequestCount,
                               addProgressNoteToGlobalState: addProgressNoteToGlobalState,
                               setActivePage: setActivePage
@@ -536,21 +576,25 @@ function mapStateToProps(state) {
   if (state.notifications.shift.notifications) {
   stateToProps.notifications = state.notifications.shift.notifications;
   stateToProps.user = state.users.user;
+  stateToProps.patient = state.patients.patient;
 }
 
 if (state.shift.shift) {
   stateToProps.books = state.shift.shift;
   stateToProps.user = state.users.user;
+  stateToProps.patient = state.patients.patient;
 }
 
 if (state.progressnotes.progress_notes ) {
   stateToProps.progress_notes = state.progressnotes.progress_notes;
   stateToProps.user = state.users.user;
+  stateToProps.patient = state.patients.patient;
 }
 
 if (state.shiftrequest.shiftSubmitRequestCount >= 0) {
   stateToProps.shiftSubmitRequestCount = state.shiftrequest.shiftSubmitRequestCount;
   stateToProps.user = state.users.user;
+  stateToProps.patient = state.patients.patient;
 }
 
 

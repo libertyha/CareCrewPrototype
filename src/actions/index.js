@@ -198,9 +198,31 @@ export function submitTasks(task) {
 }
 
 // =================================================================
+// == submitProgressnotes
+// =================================================================
+export function submitProgressNote(progressNote) {
+  console.log("inside submitProgressNote");
+
+  var data = {
+    patientId : progressNote.patientId,
+    creatorId : progressNote.creatorId,
+    description : progressNote.description
+  };
+
+  // var url = `${ROOT_URL}/progressnotes`;
+  const request = axios.post(`${ROOT_URL}progressnotes`, data);
+
+  return {
+    type: SUBMIT_PROGRESS_NOTES,
+    payload: request
+  };
+}
+
+// =================================================================
 // == fetchTasks
 // =================================================================
 export function fetchTasks(patientId) {
+  console.log("inside fetchTasks");
   const request = axios.get(`${ROOT_URL}tasks${API_KEY}?patientId=${patientId}`);
 
   return {
@@ -213,6 +235,8 @@ export function fetchTasks(patientId) {
 // == fetchProgressNotes
 // =================================================================
 export function fetchProgressNotes(patientId) {
+  console.log("inside fetchProgressNotes");
+
   const request = axios.get(`${ROOT_URL}progressNotes?patientId=${patientId}`);
 
   return {
@@ -255,9 +279,13 @@ export function incrDecrShiftSubmitRequestCount(props) {
 // == addProgressNoteToGlobalState
 // =================================================================
 export function addProgressNoteToGlobalState(progressNote) {
+
   console.log("inside addProgressNoteToGlobalState");
 
-  var request = { addprogressnote: true, progressNote: progressNote };
+  var request = {
+   addprogressnote: true,
+   progressNote: progressNote
+  };
 
   console.log("request");
   console.log(request);
@@ -266,4 +294,5 @@ export function addProgressNoteToGlobalState(progressNote) {
     type: FETCH_PROGRESS_NOTES,
     payload: request
   };
+
 }
