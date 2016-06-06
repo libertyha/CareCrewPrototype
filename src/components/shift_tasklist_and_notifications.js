@@ -27,6 +27,7 @@ export const fields = [
   'tasks[].date_scheduled',
   'tasks[].owner',
   'tasks[].completed',
+  'tasks[].shortDesc',
   'progress_note.id',
   'progress_note.description',
   'progress_note.updateDate',
@@ -306,7 +307,7 @@ class ShiftTaskListAndNotifications extends Component {
     //   return (
     //     <div key={task.id}>
     //       <label>
-    //         <input  type="checkbox" {...task} /> {task.description} {task.date_scheduled} {task.owner}
+    //         <input  type="checkbox" {...task} /> {task.shortDesc} {task.date_scheduled} {task.owner}
     //       </label>
     //     </div>
     //   );
@@ -333,7 +334,7 @@ class ShiftTaskListAndNotifications extends Component {
            <div key={index} className="list-group-item my-list-group-item">
             <div className="task-div">
               <label>
-                  <PureInput type="checkbox"  field={task.completed} /> {task.description.value} {(task.completed.value === true) ? '  -  ' + userName + '  -   ' + d1s : ''}
+                  <PureInput type="checkbox"  field={task.completed} /> {task.shortDesc.value} {(task.completed.value === true) ? '  -  ' + userName + '  -   ' + d1s : ''}
               </label> <span className="task-button-right"><Button className="badge task-button-right" onClick={onTaskButtonClick}> <i/>details...</Button></span>
 
             </div>
@@ -394,6 +395,7 @@ class ShiftTaskListAndNotifications extends Component {
     //      tasks: [
     //        { id: 1,
     //          description: 'a description',
+    //          shortDesc: 'a short description',
     //          date_scheduled: 05-26-2016,
     //          owner: 'Linda',
     //          complete: false
@@ -453,6 +455,7 @@ class ShiftTaskListAndNotifications extends Component {
           // tasks.addField({     // pushes child field with initial values onto the end of the array
           //     id: `${childIndex}`,
           //     description: 'This is a task description',
+          //     shortDesc: 'This is a short description',
           //     date_scheduled: 'May 25, 2016',
           //     owner: 'Linda',
           //     completed: false

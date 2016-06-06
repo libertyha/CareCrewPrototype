@@ -22,7 +22,8 @@ import { FETCH_TASKS } from '../actions/index';
 //          description: 'a description',
 //          date_scheduled: 05-26-2016,
 //          owner: 'Linda',
-//          complete: false
+//          complete: false,
+//          shortDesc: 'a short description'
 //        }
 //      ],
 //      notifications: [
@@ -98,6 +99,7 @@ export default function(state = INITIAL_STATE, action) {
         return (
           { id: task._id,
             description: task.description,
+            shortDesc: task.shortDesc,
             date_created: 'May 23, 2016',
             owner: 'Paul',
             completed: (task.status === 'completed') ? true : false
