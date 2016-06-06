@@ -12,6 +12,8 @@ import { resetPatient } from '../actions/index';
 import { resetPatients } from '../actions/index';
 import { setActivePage } from '../actions/index';
 const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
+const buttonImg = {'float': 'left', 'height': '100px'}
+const buttonText = {'marginTop': '30px'}
 
 export default class DemoStart extends Component {
   componentWillMount() {
@@ -41,11 +43,17 @@ export default class DemoStart extends Component {
       <div className="Well" style={wellStyles}>
     <ul>
                <Link  to="/myClients">
-    <Button onClick={() => this.onUserSelect(this.props.demoObject.caretakerId)} bsStyle ="primary" bsSize="large" block>I am Gloria (caretaker)</Button>
+                   <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>
+                       <img style={buttonImg} src={require('../img/gloria.png')}/>
+                       <div style={buttonText}><h4> I am Gloria (care aide) </h4></div>
+                   </Button>
 </Link>
 <br></br>
  <Link  to="/myFamily">
-    <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>I am Ross (family member)</Button>
+    <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>
+        <img style={buttonImg} src={require('../img/ross.png')}/>
+        <div style={buttonText}><h4> I am Ross (family member) </h4></div>
+    </Button>
 </Link>
 
     </ul>

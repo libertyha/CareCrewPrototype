@@ -16,7 +16,7 @@ export default class UserPatients extends Component {
       this.props.resetPatient();
       //change page name based on user type
       if(this.props.routes[1].path == 'myClients'){
-        this.props.setActivePage("My care clients");
+        this.props.setActivePage("My Care Clients");
       }
       else if(this.props.routes[1].path == 'myFamily'){
         this.props.setActivePage("My family members");
@@ -47,7 +47,7 @@ export default class UserPatients extends Component {
 
       }
       if(this.props.routes[1].path == 'myClients'){
-        return <div> {this.renderPatients("/caretakerFeatures")}</div>
+        return <div> {this.renderPatients("/options")}</div>
 
       }
       else{

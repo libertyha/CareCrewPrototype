@@ -479,9 +479,10 @@ class ShiftTaskListAndNotifications extends Component {
 
     return (
       <form className="form-class" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
-
-        {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [])}
+          <p><Link to="/options">
+              <Button type="button" className="btn">Back to Options</Button>
+          </Link></p>
+        {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [], this.onTaskButtonClick)}
 
         <div className="vital-signs-div">
           <div className="vital-signs-label">Vital Signs and other measurements</div>

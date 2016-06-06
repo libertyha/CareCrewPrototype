@@ -18,7 +18,7 @@ export default (
     <Route path="myClients" component={UserPatients} />
     <Route path="myFamily" component={UserPatients} />
     <Route path="startDemo" component={DemoStart} />
-    <Route path="caretakerFeatures" component={caretakerOptions} />
+    <Route path="options" component={caretakerOptions} />
     <Route path='careCheckList' component={CareCheckList} />
   </Route>
 );
