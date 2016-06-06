@@ -43,7 +43,7 @@ export default class DemoStart extends Component {
       <div className="Well" style={wellStyles}>
     <ul>
                <Link  to="/myClients">
-                   <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>
+                   <Button onClick={() => this.onUserSelect(this.props.demoObject.caretakerId)} bsStyle ="primary" bsSize="large" block>
                        <img style={buttonImg} src={require('../img/gloria.png')}/>
                        <div style={buttonText}><h4> I am Gloria (care aide) </h4></div>
                    </Button>
