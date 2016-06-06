@@ -101,6 +101,7 @@ export default function(state = INITIAL_STATE, action) {
             description: task.description,
             shortDesc: task.shortDesc,
             date_created: 'May 23, 2016',
+            updatedDate: task.updatedDate,
             owner: 'Paul',
             completed: (task.status === 'completed') ? true : false
           }

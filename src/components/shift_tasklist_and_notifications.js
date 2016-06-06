@@ -28,6 +28,7 @@ export const fields = [
   'tasks[].owner',
   'tasks[].completed',
   'tasks[].shortDesc',
+  'tasks[].updatedDate',
   'progress_note.id',
   'progress_note.description',
   'progress_note.updateDate',
@@ -96,7 +97,18 @@ class ShiftTaskListAndNotifications extends Component {
   // ===============================================================
   onTaskButtonClick(event) {
      event.preventDefault()  // prevent form submission
-     alert("Task details coming soon... ");
+
+     // get index from event target
+     // get long description from associated fields.tasks[n]
+     // use long description in the alert
+     var index = parseInt(event.currentTarget.id, 10);
+
+     var task =  this.props.fields.tasks[index];
+
+     var msg = task.description.value + ' Posted: ' + task.updatedDate.value;
+
+     // alert("Task details coming soon... ");
+     alert(msg);
 
   }
 
@@ -287,7 +299,7 @@ class ShiftTaskListAndNotifications extends Component {
   // ===============================================================
   // == renderTasks
   // ===============================================================
-  renderTasks(tasks, onTaskButtonClick) {
+  renderTasks(tasks) {
     console.log("inside renderTask()");
     //   console.log(this.props.user[0].firstName);
     //     console.log(this.props.user);
@@ -329,13 +341,13 @@ class ShiftTaskListAndNotifications extends Component {
 
     var self = this;
 
-    var temp = tasks.map(function(task, index) {
+    var temp = tasks.map((task, index) => {
       return (
            <div key={index} className="list-group-item my-list-group-item">
             <div className="task-div">
               <label>
                   <PureInput type="checkbox"  field={task.completed} /> {task.shortDesc.value} {(task.completed.value === true) ? '  -  ' + userName + '  -   ' + d1s : ''}
-              </label> <span className="task-button-right"><Button className="badge task-button-right" onClick={onTaskButtonClick}> <i/>details...</Button></span>
+              </label> <span className="task-button-right"><Button id={index} className="badge task-button-right" onClick={this.onTaskButtonClick.bind(this)}> <i/>details...</Button></span>
 
             </div>
           </div>
@@ -397,6 +409,7 @@ class ShiftTaskListAndNotifications extends Component {
     //          description: 'a description',
     //          shortDesc: 'a short description',
     //          date_scheduled: 05-26-2016,
+    //          updatedDate: 05-26-2016,
     //          owner: 'Linda',
     //          complete: false
     //        }
@@ -457,6 +470,7 @@ class ShiftTaskListAndNotifications extends Component {
           //     description: 'This is a task description',
           //     shortDesc: 'This is a short description',
           //     date_scheduled: 'May 25, 2016',
+          //     updatedDate: 'May 30, 2016,'
           //     owner: 'Linda',
           //     completed: false
           //   });
@@ -467,7 +481,7 @@ class ShiftTaskListAndNotifications extends Component {
       <form className="form-class" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
 
-        {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [], this.onTaskButtonClick)}
+        {this.renderTasks(this.props.fields.tasks ? this.props.fields.tasks : [])}
 
         <div className="vital-signs-div">
           <div className="vital-signs-label">Vital Signs and other measurements</div>
