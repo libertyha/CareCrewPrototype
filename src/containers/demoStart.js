@@ -11,7 +11,7 @@ import { resetUser } from '../actions/index';
 import { resetPatient } from '../actions/index';
 import { resetPatients } from '../actions/index';
 import { setActivePage } from '../actions/index';
-const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
+const wellStyles = {maxWidth: 500, margin: '0 auto 10px'};
 const buttonImg = {'float': 'left', 'height': '100px'}
 const buttonText = {'marginTop': '30px'}
 
@@ -44,19 +44,21 @@ export default class DemoStart extends Component {
     <ul>
                <Link  to="/myClients">
                    <Button onClick={() => this.onUserSelect(this.props.demoObject.caretakerId)} bsStyle ="primary" bsSize="large" block>
-                       <img style={buttonImg} src={require('../img/gloria.png')}/>
+                       <img className="img-circle" style={buttonImg} src={require('../img/gloria.png')}/>
                        <div style={buttonText}><h4> I am Gloria (care aide) </h4></div>
                    </Button>
 </Link>
 <br></br>
  <Link  to="/myFamily">
     <Button onClick={() => this.onUserSelect(this.props.demoObject.familyId)} bsStyle ="primary" bsSize="large" block>
-        <img style={buttonImg} src={require('../img/ross.png')}/>
+        <img className="img-circle" style={buttonImg} src={require('../img/ross.png')}/>
         <div style={buttonText}><h4> I am Ross (family member) </h4></div>
     </Button>
 </Link>
 
     </ul>
+          <p>Gloria is a caretaker with many clients, which include Ross’s father.  She is interested in quickly getting the necessary tasks and information to help her get through her busy shifts.  With CareCrew’s Symptom Tracker, Gloria can record the reported pain points of her clients.</p>
+          <p>Ross is a family member of an aging senior.  He is interested in getting a summary of how his father are doing.  He also wants to get reports that will make the next doctor’s visit more efficient.  With CareCrew, Ross can modify the care plan for his family members for the caretaker’s next shifts.</p>
       </div> //<img src={'http://www.clker.com/cliparts/P/Q/t/5/E/r/white-stick-figure.svg'} alt="human figure">
 
     );
