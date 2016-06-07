@@ -72,8 +72,7 @@ export function selectSeverity(severity){
   }
 }
 export function fetchPosts(id) {
-//  const request = axios.get(`${ROOT_URL}/posts/${API_KEY}`); //backticks do string interpolation
-  const request = axios.get(`${ROOT_URL}/${HEALTH_MEASURES}${ID_CALL}`); //backticks do string interpolation
+  const request = axios.get(`${ROOT_URL}${HEALTH_MEASURES}${ID_CALL}`); //backticks do string interpolation
 
   return {
     type: FETCH_POSTS,
@@ -82,8 +81,7 @@ export function fetchPosts(id) {
 }
 
 export function fetchCareClients(id) {
-//  const request = axios.get(`${ROOT_URL}/posts/${API_KEY}`); //backticks do string interpolation
-  const request = axios.get(`${ROOT_URL}/${USERS}${ID_PATIENT_CALL}`); //backticks do string interpolation
+  const request = axios.get(`${ROOT_URL}${USERS}${ID_PATIENT_CALL}`); //backticks do string interpolation
 
   return {
     type: FETCH_POSTS,
@@ -93,7 +91,7 @@ export function fetchCareClients(id) {
 
 
 export function createSymptomInstance(props) {
-  const request = axios.post(`${ROOT_URL}/${HEALTH_MEASURES}${ID_CALL}`, props); //’props’ argument passes along the properties
+  const request = axios.post(`${ROOT_URL}${HEALTH_MEASURES}${ID_CALL}`, props); //’props’ argument passes along the properties
   return {
     type: CREATE_SYMPTOM_INSTANCE,
   }
@@ -120,7 +118,7 @@ export function generateDemo() {
 
 
 export function fetchUser(id) {
-  const request = axios.get(`${ROOT_URL}/users?_id=${id}`);
+  const request = axios.get(`${ROOT_URL}users?_id=${id}`);
   return {
     type: FETCH_USER,
     payload: request  };
@@ -128,7 +126,7 @@ export function fetchUser(id) {
 
 
   export function fetchUsers(id) {
-    const request = axios.get(`${ROOT_URL}/users`);
+    const request = axios.get(`${ROOT_URL}users`);
     return {
       type: FETCH_USERS,
       payload: request  };
@@ -136,7 +134,7 @@ export function fetchUser(id) {
 
 
     export function fetchPatient(patientId) {
-      const request = axios.get(`${ROOT_URL}/patients?_id=${patientId}`);
+      const request = axios.get(`${ROOT_URL}patients?_id=${patientId}`);
       return {
         type: FETCH_PATIENT,
         payload: request  };
@@ -144,7 +142,7 @@ export function fetchUser(id) {
 
 
       export function fetchPatientsByUser(userId) {
-        const request = axios.get(`${ROOT_URL}/patients?userIds=${userId}`);
+        const request = axios.get(`${ROOT_URL}patients?userIds=${userId}`);
         return {
           type: FETCH_PATIENTS,
           payload: request  };
@@ -188,7 +186,6 @@ export function submitTasks(task) {
   var data = {
     "status": task.status
   };
-  var url = `${ROOT_URL}/tasks/${task._id}`;
   const request = axios.put(`${ROOT_URL}tasks/${task._id}`, data);
 
   return {
@@ -208,8 +205,6 @@ export function submitProgressNote(progressNote) {
     creatorId : progressNote.creatorId,
     description : progressNote.description
   };
-
-  // var url = `${ROOT_URL}/progressnotes`;
   const request = axios.post(`${ROOT_URL}progressnotes`, data);
 
   return {
