@@ -1,54 +1,81 @@
 import React, {Component} from 'react';
 import RadioItem from '../components/radioItem';
+import ButtonGroupItem from '../components/buttonGroupItem';
+import DropdownGroupItem from '../components/dropdownGroupItems';
+
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectPain} from '../actions/index';
 import {selectSeverity} from '../actions/index';
+import { ButtonGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { ButtonToolbar } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
+import { DropdownToggle } from 'react-bootstrap';
+import SubmitBody from '../containers/body-submit';
 
-
+const BodyInputsStyle = {'float': 'left'};
+const symptomDropdown = {'font-size':'x-large'};
 export default class RadioButtons extends Component {
   constructor(props){
     super(props);
     this.state = {defaultPain:this.props.painList[0].name, //used to make first list option the default selected radio button
     defaultActivePain: this.props.painList[0],  //used to make first list option the default selected active pain option
     defaultSeverity:this.props.severityList[0].name,
-    defaultActiveSeverity: this.props.severityList[0]
+    defaultActiveSeverity: this.props.severityList[0],
+    selectedSeverity: 'Symptom'
   };
   }
-  getPainChoice(pain){
-     this.props.selectPain(pain);
-  };
+  // getPainChoice(pain){
+  //    this.props.selectPain(pain);
+  // };
   getSeverityChoice(severity){
       this.props.selectSeverity(severity);
-
+console.log('severity has been set');
   };
 
   componentWillMount(){
     this.props.selectPain(this.state.defaultActivePain);
       this.props.selectSeverity(this.state.defaultActiveSeverity);
-  }
+
+  };
+
+getPainChoice(severity){
+  console.log(severity);
+  console.log(this.state.selectedSeverity)
+  this.setState({ selectedSeverity: severity.label });
+  this.props.selectPain(severity);
+}
+
+
   render() {
-
-       const painListRendered = this.props.painList.map((pain) => {
-         var isChecked = pain.name === this.state.defaultPain;
-         return <RadioItem itemToSelect = {pain.label} radioSelect = {() => this.getPainChoice(pain)} id = {pain.name} key = {pain.name} radioGroup = {pain.group} defaultChecked = {isChecked}/>
+       const painDropDownRendered = this.props.painList.map((pain) => {
+         return <MenuItem eventKey={pain} key = {pain.name}><h3>{pain.label}</h3></MenuItem>
        });
-
-       const severityListRendered = this.props.severityList.map((severity) => {
-         var isChecked = severity.name === this.state.defaultSeverity;
-         return <RadioItem itemToSelect = {<img src={severity.img}/>} radioSelect = {() => this.getSeverityChoice(severity)} id = {severity.name} key = {severity.name} radioGroup = {severity.group} defaultChecked = {isChecked}/>
+       const severityButtonsRendered = this.props.severityList.map((severity) => {
+         return <ButtonGroupItem setValue = {() => this.getSeverityChoice(severity)} id = {severity.name} key = {severity.name} itemLabel = {severity.label} buttonClass = {severity.class}/>
        });
 
      if(!this.props.bodyPart){
        return <div></div> ;
      }
-       return <div>
-       <ul className="col-md-4 list-group">
-         {painListRendered}
-       </ul>
-       <ul className="col-md-4 list-group">
-         {severityListRendered}
-       </ul>
+       return <div style = {BodyInputsStyle}>
+          <h2>{this.props.bodyPart.label}</h2>
+
+           <ButtonToolbar>
+                <DropdownButton style={symptomDropdown} bsSize="large" onSelect = {this.getPainChoice.bind(this)} title={this.state.selectedSeverity} id="Symptom Type Dropdown">
+                    {painDropDownRendered}
+                </DropdownButton>
+              </ButtonToolbar>
+<br></br>
+
+              <ButtonGroup vertical>
+                    {severityButtonsRendered}
+             </ButtonGroup>
+    <br></br>         <br></br>
+             <SubmitBody />
        </div>
   }
 }

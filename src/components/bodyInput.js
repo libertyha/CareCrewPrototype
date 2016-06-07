@@ -17,7 +17,6 @@ class BodyInput extends Component {
       <div>
         <BodyLink />
         <RadioButtons />
-        <SubmitBody />
       </div> //<img src={'http://www.clker.com/cliparts/P/Q/t/5/E/r/white-stick-figure.svg'} alt="human figure">
 
     );

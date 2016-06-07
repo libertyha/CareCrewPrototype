@@ -7,6 +7,9 @@ import { createSymptomInstance } from '../actions/index';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 
+
+
+
 export default class BodySubmit extends Component {
   constructor(props){
     super(props);
@@ -24,6 +27,8 @@ export default class BodySubmit extends Component {
   };
 
   openModal() {
+
+
    this.setState({showModal: true });
    this.setState({submitBodyPart: this.props.bodyPart.label})
    this.setState({submitPainType: this.props.activePain.label})
@@ -63,10 +68,14 @@ insertTrackData(){
 
 
   render() {
+
     if(!this.props.bodyPart){
       return <div> </div> ;
     }
-    return <div>  <Button bsStyle="primary" bsSize="large" onClick={() => this.openModal()}>Submit</Button>
+    return <div>
+
+
+    <Button bsStyle="primary" bsSize="large" onClick={() => this.openModal()}>Submit</Button>
 
         <Modal show={this.state.showModal} onHide={() => this.closeModal()}>
           <Modal.Header >
@@ -82,6 +91,11 @@ insertTrackData(){
               <Button onClick={() => this.closeModal()}>Cancel</Button>
           </Modal.Footer>
         </Modal>
+
+
+
+
+
       </div>
 
 

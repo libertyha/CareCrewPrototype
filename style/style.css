@@ -167,3 +167,55 @@ body {
     height: 100%;
     margin-left: 50%;
 }
+
+.severity0Button{
+  background-image: url('../src/img/Emo_NoPain.png');
+  background-repeat: no-repeat;
+  background-position: 20% 50%;
+  height: 100px;
+}
+.severity0Button:hover, .severity0Button:focus{
+  background-image: url('../src/img/Emo_NoPainSel.png');
+}
+.severity1Button{
+  background-image: url('../src/img/Emo_Mild.png');
+  background-repeat: no-repeat;
+  background-position: 20% 50%;
+  height: 100px;
+}
+.severity1Button:hover, .severity1Button:focus{
+  background-image: url('../src/img/Emo_MildSel.png');
+}
+.severity2Button{
+  background-image: url('../src/img/Emo_Moderate.png');
+  background-repeat: no-repeat;
+  background-position: 20% 50%;
+  height: 100px;
+
+}
+.severity2Button:hover, .severity2Button:focus{
+  background-image: url('../src/img/Emo_ModerateSel.png');
+}
+
+.severity3Button{
+  background-image: url('../src/img/Emo_Severe.png');
+  background-repeat: no-repeat;
+  background-position: 20% 50%;
+  height: 100px;
+
+}
+.severity3Button:hover, .severity3Button:focus{
+  background-image: url('../src/img/Emo_SevereSel.png');
+}
+.severity4Button{
+  background-image: url('../src/img/Emo_Excruciating.png');
+  background-repeat: no-repeat;
+  background-position: 20% 50%;
+  height: 100px;
+}
+.severity4Button:hover, .severity4Button:focus{
+  background-image: url('../src/img/Emo_ExcruciatingSel.png');
+}
+.caret{
+  border-top: none; 
+}
