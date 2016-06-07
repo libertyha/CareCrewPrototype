@@ -66,6 +66,24 @@ class ShiftTaskListAndNotifications extends Component {
     //this.props.fetchProgressNotes(this.props.patientId);
   }
 
+  formatDateToMonDayYear(dateString) {
+     var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+
+    // var date = Date.parse(dateString);
+    date = Date(dateString);
+    var day =        date.getDate();
+    var monthIndex = date.getMonth();
+    var year =       date.getFullYear();
+
+    return (monthNames[monthIndex] + ' ' + day + ' ' + year);
+
+  }
+
   // ===============================================================
   // == onAddProgressNote
   // ===============================================================
@@ -125,9 +143,28 @@ class ShiftTaskListAndNotifications extends Component {
      // use long description in the alert
      var index = parseInt(event.currentTarget.id, 10);
 
+     var dateString = this.props.fields.tasks[index].updatedDate.value;
+
+     //  0123456789
+     //  2016-06-06T23:54
+     var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+
+     var year = dateString.slice(0,4);
+     var monthIndex = parseInt(dateString.slice(5,7), 10);
+     var day = dateString.slice(8,10);
+     var hr = dateString.slice(11,13);
+     var min = dateString.slice(14,16);
+
+     var formattedDateString = monthNames[monthIndex - 1] + ' ' + day + ', ' + year;
+
      var task =  {
       description: this.props.fields.tasks[index].description.value,
-      updatedDate: this.props.fields.tasks[index].updatedDate.value
+      updatedDate: formattedDateString
      }
 
      // open Modal window
